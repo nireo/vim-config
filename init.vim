@@ -14,6 +14,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rhysd/vim-clang-format'
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -35,19 +36,26 @@ Plug 'owickstrom/vim-colors-paramount'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'AlessandroYorba/Alduin'
+Plug 'w0ng/vim-hybrid'
+Plug 'robertmeta/nofrils'
 call plug#end()
 
 
 " Theme settings
-colorscheme paramount 
+colo nofrils-dark 
 let g:airline_theme='minimalist'
 
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=1
+let g:nofrils_heavylinenumbers=1
+
+
+" NerdTree settings
 inoremap jk <ESC>
 nmap <C-n> :NERDTreeFind<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 nmap <F6> :NERDTreeToggle<CR>
-
 
 let g:NERDTreeGitStatusWithFlags = 1
     "\ "Staged"    : "#0ee375",  
@@ -59,7 +67,6 @@ let g:NERDTreeGitStatusWithFlags = 1
     "\ "Clean"     : "#87939A",   
     "\ "Ignored"   : "#808080"   
     "\ }                         
-
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -93,6 +100,8 @@ set hidden
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+
+let g:go_def_mapping_enabled = 0
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -170,3 +179,11 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" Clang settings
+autocmd Filetype c, cpp, objc ClangFormatAutoEnable
+
+" Prettier
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
