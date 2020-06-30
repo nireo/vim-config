@@ -2,9 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
-"lug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
@@ -42,13 +40,13 @@ call plug#end()
 
 
 " Theme settings
-colo nofrils-dark 
+colorscheme nofrils-dark 
+set background=dark
 let g:airline_theme='minimalist'
 
-let g:nofrils_strbackgrounds=1
+let g:nofrils_strbackgrounds=0
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
-
 
 " NerdTree settings
 inoremap jk <ESC>
@@ -73,6 +71,7 @@ let g:NERDTreeIgnore = ['^node_modules$']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrl_map = '<c-p>'
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -81,8 +80,8 @@ set number relativenumber
 
 set smarttab
 set cindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 
@@ -101,7 +100,15 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
+" Go settings
 let g:go_def_mapping_enabled = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_functions_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_extra_types = 1
+
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -181,9 +188,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Clang settings
 autocmd Filetype c, cpp, objc ClangFormatAutoEnable
+" Format c, cpp, objc code on save
+autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 
 " Prettier
-" when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
