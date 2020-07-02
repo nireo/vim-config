@@ -28,25 +28,25 @@ Plug 'racer-rust/vim-racer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-
 " Themes
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'altercation/vim-colors-solarized'
+Plug 'AlessandroYorba/Sierra'
+Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
-Plug 'AlessandroYorba/Alduin'
 Plug 'w0ng/vim-hybrid'
 Plug 'robertmeta/nofrils'
 call plug#end()
 
 
 " Theme settings
-colorscheme nofrils-dark 
+colorscheme sierra 
 set background=dark
 let g:airline_theme='minimalist'
 
 let g:nofrils_strbackgrounds=0
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
+
+let g:sierra_Twilight=1
 
 " NerdTree settings
 inoremap jk <ESC>
@@ -129,9 +129,6 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
