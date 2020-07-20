@@ -32,21 +32,23 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'AlessandroYorba/Sierra'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
 Plug 'robertmeta/nofrils'
+Plug 'chriskempson/base16-vim'
+Plug 'wadackel/vim-dogrun'
+Plug 'cocopon/iceberg.vim'
 call plug#end()
 
-
 " Theme settings
-colorscheme sierra 
-set background=dark
-let g:airline_theme='minimalist'
+colorscheme iceberg 
+let g:airline_theme='base16'
 
 let g:nofrils_strbackgrounds=0
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
 
-let g:sierra_Twilight=1
+let g:sierra_Midnight = 1
+
+set termguicolors
 
 " NerdTree settings
 inoremap jk <ESC>
@@ -108,7 +110,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_types = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_extra_types = 1
-
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
