@@ -5,7 +5,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'HerringtonDarkholme/yats.vim' 
@@ -32,16 +34,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'AlessandroYorba/Sierra'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
-Plug 'robertmeta/nofrils'
 Plug 'chriskempson/base16-vim'
 Plug 'wadackel/vim-dogrun'
-Plug 'cocopon/iceberg.vim'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 " Theme settings
-colorscheme iceberg 
-let g:airline_theme='base16'
+colorscheme jellybeans 
+let g:airline_theme='jellybeans'
 
+let g:space_vim_dark_background = 233
 let g:nofrils_strbackgrounds=0
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
@@ -72,20 +74,49 @@ let g:NERDTreeIgnore = ['^node_modules$']
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrl_map = '<c-p>'
-
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+" switch line numbers to relative, but also include the current selected line
+" number
 set number relativenumber
+
+" Use unicode supporting encoding
+set encoding=utf-8
 
 set smarttab
 set cindent
 set tabstop=2
 set shiftwidth=2
+
+" Replace tabs with spaces when saved
 set expandtab
 
+" Automatically insert tabs or spaces when you write code
+set autoindent
+
+" Highlight the current line
+set cursorline
+
+set hidden 
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+" Disable swap files
+set noswapfile
+
+" The amount of lines above and below the cursor
+set scrolloff=2
+
+" Always show where the cursor is
+set ruler
+
+" Avoid wrapping a line in the middle of a word
+set linebreak
+
+" Enable mouse usage
+set mouse=a
 
 " coc config
 let g:coc_global_extensions = [
@@ -97,10 +128,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ ]
 
-set hidden 
-set updatetime=300
-set shortmess+=c
-set signcolumn=yes
+
 
 " Go settings
 let g:go_def_mapping_enabled = 0
@@ -129,9 +157,13 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" Go to definition
 nmap <silent> gd <Plug>(coc-definition)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Fuzzy file finder
+nnoremap <silent> <C-p> :Files<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -193,3 +225,17 @@ autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
+" Add a new binding for the ESC-key since it is quite far away
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+
+" Disable array keys for practice
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" add a save keybind instead of writing :w
+nnoremap <C-s> :w<CR>
