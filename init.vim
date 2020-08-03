@@ -1,16 +1,16 @@
 call plug#begin('~/.vim/plugged')
 
+" Non language specific
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'HerringtonDarkholme/yats.vim' 
+
 
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -34,23 +34,25 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'AlessandroYorba/Sierra'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim'
-Plug 'wadackel/vim-dogrun'
 Plug 'nanotech/jellybeans.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'jaredgorski/fogbell.vim'
+Plug 'robertmeta/nofrils'
 call plug#end()
 
 " Theme settings
-colorscheme jellybeans 
-let g:airline_theme='jellybeans'
-
+colorscheme fogbell 
+let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
 let g:nofrils_strbackgrounds=0
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
-
 let g:sierra_Midnight = 1
 
-set termguicolors
+if has('termguicolors')
+  set termguicolors
+endif
 
 " NerdTree settings
 inoremap jk <ESC>
@@ -81,7 +83,7 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " number
 set number relativenumber
 
-" Use unicode supporting encoding
+" Use Unicode supporting encoding
 set encoding=utf-8
 
 set smarttab
@@ -117,6 +119,9 @@ set linebreak
 
 " Enable mouse usage
 set mouse=a
+
+" Ignore case when searching
+set ignorecase
 
 " coc config
 let g:coc_global_extensions = [
@@ -237,5 +242,5 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" add a save keybind instead of writing :w
+" add a save key binding instead of writing the command :w
 nnoremap <C-s> :w<CR>
