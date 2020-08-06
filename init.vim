@@ -1,17 +1,44 @@
 call plug#begin('~/.vim/plugged')
 
-" Non language specific
+""""""""""""""""" Non language specific
+" Intellisense engine, with full language server protocal support (auto
+" completion & auto imports)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"""" NERDTree related plugins
 Plug 'scrooloose/nerdtree'
+" Highlight files with changes
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Show file icons next to files (vim font needs to be Nerd Font, https://github.com/ryanoasis/nerd-fonts)
 Plug 'ryanoasis/vim-devicons'
+
+" Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
+
+"FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Improved comments
 Plug 'scrooloose/nerdcommenter'
-Plug 'HerringtonDarkholme/yats.vim' 
 
+" Hex color highlighting in all files
+Plug 'skammer/vim-css-color'
 
+" Status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Themes
+Plug 'liuchengxu/space-vim-dark'
+Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'jaredgorski/fogbell.vim'
+Plug 'robertmeta/nofrils'
+
+""""""""""""""""" Language specific
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
@@ -21,38 +48,21 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Javascript & typescript
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'HerringtonDarkholme/yats.vim' 
 
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-
-" Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Themes
-Plug 'AlessandroYorba/Sierra'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
-Plug 'sainnhe/gruvbox-material'
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'jaredgorski/fogbell.vim'
-Plug 'robertmeta/nofrils'
 call plug#end()
 
 " Theme settings
-colorscheme fogbell 
-let g:airline_theme='minimalist'
+let g:space_vim_dark_background = 233
+color space-vim-dark 
+let g:airline_theme='violet'
 let g:space_vim_dark_background = 233
 let g:nofrils_strbackgrounds=0
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
-let g:sierra_Midnight = 1
-
-if has('termguicolors')
-  set termguicolors
-endif
 
 " NerdTree settings
 inoremap jk <ESC>
@@ -135,7 +145,7 @@ let g:coc_global_extensions = [
 
 
 
-" Go settings
+" Go plugin settings settings
 let g:go_def_mapping_enabled = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_functions_calls = 1
@@ -165,11 +175,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Go to definition
 nmap <silent> gd <Plug>(coc-definition)
 
+" Show documentation
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" Fuzzy file finder
-nnoremap <silent> <C-p> :Files<CR>
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -178,6 +185,10 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Fuzzy file finder
+nnoremap <silent> <C-p> :Files<CR>
+
+" Coc related stuff
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <F2> <Plug>(coc-rename)
 
@@ -211,7 +222,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
