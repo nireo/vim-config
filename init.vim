@@ -33,10 +33,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
-Plug 'sainnhe/gruvbox-material'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'jaredgorski/fogbell.vim'
-Plug 'robertmeta/nofrils'
+Plug 'tomasiser/vim-code-dark'
 
 """"""""""""""""" Language specific
 " C++
@@ -57,12 +56,11 @@ call plug#end()
 
 " Theme settings
 let g:space_vim_dark_background = 233
-color space-vim-dark 
-let g:airline_theme='violet'
+color fogbell 
+let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
-let g:nofrils_strbackgrounds=0
-let g:nofrils_heavycomments=1
-let g:nofrils_heavylinenumbers=1
+let g:airline_powerline_fonts = 1
+set t_Co=256
 
 " NerdTree settings
 inoremap jk <ESC>
