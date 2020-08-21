@@ -8,6 +8,18 @@ This repository includes all the configuration files that use with Vim. I'am cur
 git clone https://github.com/nireo/vim-config ~/.config/nvim
 ```
 
+Make sure you have all these dependencies installed with npm:
+```
+npm install -g coc.nvim neovim
+```
+
+You can install additional coc extensions to have autocompletion for many different languages, for example:
+```
+# golang, html, typescript, coc-clangd
+:CocInstall coc-go coc-html coc-tsserver coc-clangd
+```
+Those are just examples of the coc extensions. A full list of implemented coc extensions can be found [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions).
+
 ## Plugins
 
 ### Not language specific
