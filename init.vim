@@ -32,14 +32,16 @@ Plug 'vim-airline/vim-airline-themes'
 " Themes
 Plug 'liuchengxu/space-vim-dark'
 Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
-Plug 'owickstrom/vim-colors-paramount'
 Plug 'jaredgorski/fogbell.vim'
 Plug 'AlessandroYorba/Alduin'
+Plug 'nikolvs/vim-sunbather'
+Plug 'jaredgorski/SpaceCamp'
+Plug 'mswift42/vim-themes'
+Plug 'djjcast/mirodark'
 
 """"""""""""""""" Language specific
 " C++
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
 
 " Golang
@@ -55,12 +57,18 @@ Plug 'racer-rust/vim-racer'
 call plug#end()
 
 " Theme settings
-let g:space_vim_dark_background = 234
-color alduin 
-let g:airline_theme='base16'
-let g:space_vim_dark_background = 233
-let g:airline_powerline_fonts = 1
+if has('termguicolors') 
+  set termguicolors
+endif
 set t_Co=256
+syntax on
+filetype plugin on
+filetype indent on
+
+let g:space_vim_dark_background = 234
+color mirodark 
+let g:airline_theme='minimalist'
+let g:space_vim_dark_background = 233
 
 " NerdTree settings
 inoremap jk <ESC>
@@ -108,6 +116,21 @@ set autoindent
 " Highlight the current line
 set cursorline
 
+" yank and copy to X clipboard
+set clipboard+=unnamed
+
+" Set maximum history record
+set history=1000
+
+" Faster redrawing
+set ttyfast
+
+set report=0
+set linespace=0
+set mousehide
+
+set wildmenu
+
 set hidden 
 set updatetime=300
 set shortmess+=c
@@ -117,7 +140,7 @@ set signcolumn=yes
 set noswapfile
 
 " The amount of lines above and below the cursor
-set scrolloff=2
+set scrolloff=4
 
 " Always show where the cursor is
 set ruler
