@@ -31,13 +31,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 Plug 'liuchengxu/space-vim-dark'
-Plug 'morhetz/gruvbox'
 Plug 'jaredgorski/fogbell.vim'
-Plug 'AlessandroYorba/Alduin'
-Plug 'nikolvs/vim-sunbather'
-Plug 'jaredgorski/SpaceCamp'
-Plug 'mswift42/vim-themes'
 Plug 'djjcast/mirodark'
+Plug 'co1ncidence/mountaineer'
 
 """"""""""""""""" Language specific
 " C++
@@ -60,13 +56,17 @@ call plug#end()
 if has('termguicolors') 
   set termguicolors
 endif
-set t_Co=256
+if !has('gui_running')
+  set t_Co=256
+endif
+set background=dark
+
 syntax on
 filetype plugin on
 filetype indent on
 
 let g:space_vim_dark_background = 234
-color mirodark 
+color mountaineer 
 let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
 
@@ -129,10 +129,19 @@ set report=0
 set linespace=0
 set mousehide
 
+
+" Decent wildmenu
 set wildmenu
+set wildmode=list:longest
+set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
+
+" Better splits
+set splitright
+set splitbelow
 
 set hidden 
 set updatetime=300
+set timeoutlen=300
 set shortmess+=c
 set signcolumn=yes
 
@@ -151,8 +160,12 @@ set linebreak
 " Enable mouse usage
 set mouse=a
 
-" Ignore case when searching
+" Better search
 set ignorecase
+set incsearch
+set gdefault
+set smartcase
+
 
 " coc config
 let g:coc_global_extensions = [
@@ -264,6 +277,22 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " Add a new binding for the ESC-key since it is quite far away
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
+snoremap <C-j> <Esc>
+xnoremap <C-j> <Esc>
+cnoremap <C-j> <C-c>
+onoremap <C-j> <Esc>
+lnoremap <C-j> <Esc>
+tnoremap <C-j> <Esc>
+
+nnoremap <C-k> <Esc>
+inoremap <C-k> <Esc>
+vnoremap <C-k> <Esc>
+snoremap <C-k> <Esc>
+xnoremap <C-k> <Esc>
+cnoremap <C-k> <C-c>
+onoremap <C-k> <Esc>
+lnoremap <C-k> <Esc>
+tnoremap <C-k> <Esc>
 
 " Disable array keys for practice
 nnoremap <up> <nop>
