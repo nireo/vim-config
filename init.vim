@@ -25,6 +25,9 @@ Plug 'scrooloose/nerdcommenter'
 " Hex color highlighting in all files
 Plug 'skammer/vim-css-color'
 
+" Discord presence
+Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -34,6 +37,8 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'jaredgorski/fogbell.vim'
 Plug 'djjcast/mirodark'
 Plug 'co1ncidence/mountaineer'
+Plug 'lifepillar/vim-solarized8'
+Plug 'romainl/Apprentice'
 
 """"""""""""""""" Language specific
 " C++
@@ -54,20 +59,18 @@ call plug#end()
 
 " Theme settings
 if has('termguicolors') 
-  set termguicolors
-endif
+ set termguicolors
+ endif
 if !has('gui_running')
   set t_Co=256
 endif
+
+syntax enable
 set background=dark
+colorscheme solarized8
 
-syntax on
-filetype plugin on
-filetype indent on
-
-let g:space_vim_dark_background = 234
-color mountaineer 
-let g:airline_theme='minimalist'
+let g:airline_solarized_bg='dark'
+let g:airline_theme='solarized'
 let g:space_vim_dark_background = 233
 
 " NerdTree settings
@@ -104,8 +107,8 @@ set encoding=utf-8
 
 set smarttab
 set cindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 
 " Replace tabs with spaces when saved
 set expandtab
@@ -114,7 +117,7 @@ set expandtab
 set autoindent
 
 " Highlight the current line
-set cursorline
+" set cursorline
 
 " yank and copy to X clipboard
 set clipboard+=unnamed
