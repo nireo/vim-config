@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-
 """"""""""""""""" Non language specific
 " Intellisense engine, with full language server protocal support (auto
 " completion & auto imports)
@@ -24,9 +23,6 @@ Plug 'scrooloose/nerdcommenter'
 
 " Hex color highlighting in all files
 Plug 'skammer/vim-css-color'
-
-" Discord presence
-Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 
 " Status bar
 Plug 'vim-airline/vim-airline'
@@ -67,10 +63,10 @@ endif
 
 syntax enable
 set background=dark
-colorscheme solarized8
+colorscheme mirodark
 
 let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
 
 " NerdTree settings
@@ -179,17 +175,6 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ ]
-
-
-
-" Go plugin settings settings
-let g:go_def_mapping_enabled = 0
-let g:go_highlight_functions = 1
-let g:go_highlight_functions_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_types = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_extra_types = 1
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
