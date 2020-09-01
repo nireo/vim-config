@@ -30,11 +30,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 Plug 'liuchengxu/space-vim-dark'
-Plug 'jaredgorski/fogbell.vim'
 Plug 'djjcast/mirodark'
-Plug 'co1ncidence/mountaineer'
 Plug 'lifepillar/vim-solarized8'
-Plug 'romainl/Apprentice'
+Plug 'fenetikm/falcon'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'cocopon/iceberg.vim'
 
 """"""""""""""""" Language specific
 " C++
@@ -62,8 +62,14 @@ if !has('gui_running')
 endif
 
 syntax enable
+colorscheme space-vim-dark
 set background=dark
-colorscheme mirodark
+
+" Underline cursor in insert mode
+let &t_SI = "\e[4 q"
+
+" Block cursor in normal mode
+let &t_EI = "\e[2 q"
 
 let g:airline_solarized_bg='dark'
 let g:airline_theme='minimalist'
@@ -138,6 +144,8 @@ set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp
 set splitright
 set splitbelow
 
+set cmdheight=1
+
 set hidden 
 set updatetime=300
 set timeoutlen=300
@@ -164,7 +172,18 @@ set ignorecase
 set incsearch
 set gdefault
 set smartcase
+set hlsearch
 
+" enable regular expressions
+set magic
+
+" set unix as the standard file type
+set ffs=unix,dos,mac
+
+" Turn backup off, just use git
+set nobackup
+set nowb
+set noswapfile
 
 " coc config
 let g:coc_global_extensions = [
@@ -174,6 +193,9 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
+  \ 'coc-go',
+  \ 'coc-html',
+  \ 'coc-clangd'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -292,3 +314,4 @@ inoremap <right> <nop>
 
 " add a save key binding instead of writing the command :w
 nnoremap <C-s> :w<CR>
+nmap <leader>w :w!<cr>

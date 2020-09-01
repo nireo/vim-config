@@ -5,6 +5,9 @@ set background=dark
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
+
 
 " switch line numbers to relative, but also include the current selected line
 " number
