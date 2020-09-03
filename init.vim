@@ -26,15 +26,14 @@ Plug 'skammer/vim-css-color'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes' 
 
 " Themes
 Plug 'liuchengxu/space-vim-dark'
 Plug 'djjcast/mirodark'
-Plug 'lifepillar/vim-solarized8'
-Plug 'fenetikm/falcon'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'cocopon/iceberg.vim'
+Plug 'robertmeta/nofrils'
+Plug 'jaredgorski/fogbell.vim'
+Plug 'andreypopp/vim-colors-plain'
 
 """"""""""""""""" Language specific
 " C++
@@ -56,14 +55,14 @@ call plug#end()
 " Theme settings
 if has('termguicolors') 
  set termguicolors
- endif
+endif
 if !has('gui_running')
   set t_Co=256
 endif
 
 syntax enable
-colorscheme space-vim-dark
 set background=dark
+colorscheme plain
 
 " Underline cursor in insert mode
 let &t_SI = "\e[4 q"
@@ -71,7 +70,11 @@ let &t_SI = "\e[4 q"
 " Block cursor in normal mode
 let &t_EI = "\e[2 q"
 
-let g:airline_solarized_bg='dark'
+" Nofrils theme settings
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavycomments=1
+let g:nofrils_heavylinenumbers=1
+
 let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
 
@@ -81,17 +84,6 @@ nmap <C-n> :NERDTreeFind<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 nmap <F6> :NERDTreeToggle<CR>
-
-let g:NERDTreeGitStatusWithFlags = 1
-    "\ "Staged"    : "#0ee375",  
-    "\ "Modified"  : "#d9bf91",  
-    "\ "Renamed"   : "#51C9FC",  
-    "\ "Untracked" : "#FCE77C",  
-    "\ "Unmerged"  : "#FC51E6",  
-    "\ "Dirty"     : "#FFBD61",  
-    "\ "Clean"     : "#87939A",   
-    "\ "Ignored"   : "#808080"   
-    "\ }                         
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -119,7 +111,7 @@ set expandtab
 set autoindent
 
 " Highlight the current line
-" set cursorline
+set cursorline
 
 " yank and copy to X clipboard
 set clipboard+=unnamed
@@ -152,9 +144,6 @@ set timeoutlen=300
 set shortmess+=c
 set signcolumn=yes
 
-" Disable swap files
-set noswapfile
-
 " The amount of lines above and below the cursor
 set scrolloff=4
 
@@ -185,6 +174,12 @@ set nobackup
 set nowb
 set noswapfile
 
+" Don't update the screen during macro and script execution
+set lazyredraw
+
+" Set the window's title, reflecting the file currently being edited
+set title
+
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -195,7 +190,8 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ 'coc-go',
   \ 'coc-html',
-  \ 'coc-clangd'
+  \ 'coc-clangd',
+  \ 'coc-rls'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -280,7 +276,7 @@ autocmd Filetype c, cpp, objc ClangFormatAutoEnable
 " Format c, cpp, objc code on save
 autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 
-" Prettier
+" Prettier formatting
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
