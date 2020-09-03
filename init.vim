@@ -6,13 +6,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """" NERDTree related plugins
 Plug 'scrooloose/nerdtree'
-" Highlight files with changes
-Plug 'Xuyuanp/nerdtree-git-plugin'
 " Show file icons next to files (vim font needs to be Nerd Font, https://github.com/ryanoasis/nerd-fonts)
 Plug 'ryanoasis/vim-devicons'
 
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
+
+" Detect a root directory
+Plug 'airblade/vim-rooter'
 
 "FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -179,6 +180,9 @@ set lazyredraw
 
 " Set the window's title, reflecting the file currently being edited
 set title
+
+" Rooter configuration
+let g:rooter_patterns = ['.git', 'main.go', 'node_modules', '=src', 'Makefile', 'main.cpp']
 
 " coc config
 let g:coc_global_extensions = [
