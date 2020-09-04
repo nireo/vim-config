@@ -51,6 +51,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 " Theme settings
@@ -99,6 +102,8 @@ set number relativenumber
 
 " Use Unicode supporting encoding
 set encoding=utf-8
+
+set nocursorcolumn
 
 set smarttab
 set cindent
@@ -283,6 +288,15 @@ autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 " Prettier formatting
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
+
+" Haskell syntax highlight configuration
+let g:haskell_enable_quantification = 1
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let g:haskell_enable_pattern_synonyms = 1
+let g:haskell_enable_typeroles = 1
+let g:haskell_enable_static_pointers = 1
+let g:haskell_backpack = 1
 
 " Add a new binding for the ESC-key since it is quite far away
 inoremap <C-j> <Esc>
