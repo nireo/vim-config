@@ -6,8 +6,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 """" NERDTree related plugins
 Plug 'scrooloose/nerdtree'
-" Show file icons next to files (vim font needs to be Nerd Font, https://github.com/ryanoasis/nerd-fonts)
-Plug 'ryanoasis/vim-devicons'
 
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
@@ -26,8 +24,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'skammer/vim-css-color'
 
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes' 
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes' 
 
 " Themes
 Plug 'liuchengxu/space-vim-dark'
@@ -35,6 +33,7 @@ Plug 'djjcast/mirodark'
 Plug 'robertmeta/nofrils'
 Plug 'jaredgorski/fogbell.vim'
 Plug 'andreypopp/vim-colors-plain'
+Plug 'lifepillar/vim-solarized8'
 
 """"""""""""""""" Language specific
 " C++
@@ -58,7 +57,7 @@ call plug#end()
 
 " Theme settings
 if has('termguicolors') 
- set termguicolors
+  set termguicolors
 endif
 if !has('gui_running')
   set t_Co=256
@@ -68,18 +67,12 @@ syntax enable
 set background=dark
 colorscheme plain
 
-" Underline cursor in insert mode
-let &t_SI = "\e[4 q"
-
-" Block cursor in normal mode
-let &t_EI = "\e[2 q"
-
 " Nofrils theme settings
 let g:nofrils_strbackgrounds=1
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
 
-let g:airline_theme='minimalist'
+" let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
 
 " NerdTree settings
@@ -90,6 +83,7 @@ nmap ++ <plug>NERDCommenterToggle
 nmap <F6> :NERDTreeToggle<CR>
 
 let g:NERDTreeIgnore = ['^node_modules$']
+let NERDTreeShowHidden = 1
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
