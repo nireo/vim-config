@@ -7,8 +7,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
 
-" Detect a root directory
-Plug 'airblade/vim-rooter'
+Detect a root directory Plug 'airblade/vim-rooter'
 
 "FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -17,12 +16,7 @@ Plug 'junegunn/fzf.vim'
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
-" Status bar
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes' 
-
 " Themes
-Plug 'liuchengxu/space-vim-dark'
 Plug 'djjcast/mirodark'
 Plug 'robertmeta/nofrils'
 Plug 'jaredgorski/fogbell.vim'
@@ -65,9 +59,6 @@ colorscheme plain
 let g:nofrils_strbackgrounds=1
 let g:nofrils_heavycomments=1
 let g:nofrils_heavylinenumbers=1
-
-" let g:airline_theme='minimalist'
-let g:space_vim_dark_background = 233
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -160,9 +151,6 @@ set noswapfile
 
 " Don't update the screen during macro and script execution
 set lazyredraw
-
-" Set the window's title, reflecting the file currently being edited
-set title
 
 " Rooter configuration
 let g:rooter_patterns = ['.git', 'main.go', 'node_modules', '=src', 'Makefile', 'main.cpp']
@@ -303,6 +291,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" Disable the esc key for practice using C-k & C-j
+inoremap <Esc> <nop>
 
 " add a save key binding instead of writing the command :w
 nnoremap <C-s> :w<CR>
