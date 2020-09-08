@@ -4,9 +4,6 @@ call plug#begin('~/.vim/plugged')
 " completion & auto imports)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"""" NERDTree related plugins
-Plug 'scrooloose/nerdtree'
-
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
 
@@ -19,9 +16,6 @@ Plug 'junegunn/fzf.vim'
 
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
-
-" Hex color highlighting in all files
-Plug 'skammer/vim-css-color'
 
 " Status bar
 " Plug 'vim-airline/vim-airline'
@@ -74,16 +68,6 @@ let g:nofrils_heavylinenumbers=1
 
 " let g:airline_theme='minimalist'
 let g:space_vim_dark_background = 233
-
-" NerdTree settings
-inoremap jk <ESC>
-nmap <C-n> :NERDTreeFind<CR>
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
-nmap <F6> :NERDTreeToggle<CR>
-
-let g:NERDTreeIgnore = ['^node_modules$']
-let NERDTreeShowHidden = 1
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
