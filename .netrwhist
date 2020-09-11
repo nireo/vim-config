@@ -1,4 +1,12 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhistcnt =2
-let g:netrw_dirhist_2='/home/eemil/go/src/github.com/nireo/e2ee-chat'
-let g:netrw_dirhist_1='/home/eemil/.config/nvim'
+let g:netrw_dirhist_2='/home/eemil/go/src/github.com/nireo/e2ee-chat/handlers'
+let g:netrw_dirhist_1='/home/eemil/go/src/github.com/nireo/e2ee-chat'
+let g:netrw_dirhist_0='/home/eemil/go/src/github.com/nireo/e2ee-chat/utils'
+let g:netrw_dirhist_9='/home/eemil/go/src/github.com/nireo/e2ee-chat'
+let g:netrw_dirhist_8='/home/eemil/go/src/github.com/nireo/e2ee-chat/utils'
+let g:netrw_dirhist_7='/home/eemil/go/src/github.com/nireo/e2ee-chat'
+let g:netrw_dirhist_6='/home/eemil/go/src/github.com/nireo/e2ee-chat/handlers'
+let g:netrw_dirhist_5='/home/eemil/go/src/github.com/nireo/e2ee-chat'
+let g:netrw_dirhist_4='/home/eemil/projects/portfolio/src/components'
+let g:netrw_dirhist_3='/home/eemil/projects/portfolio/src'

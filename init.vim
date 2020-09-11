@@ -7,7 +7,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
 
-Detect a root directory Plug 'airblade/vim-rooter'
+" Detect a root directory 
+Plug 'airblade/vim-rooter'
 
 "FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -18,10 +19,12 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes
 Plug 'djjcast/mirodark'
-Plug 'robertmeta/nofrils'
-Plug 'jaredgorski/fogbell.vim'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'lifepillar/vim-solarized8'
+Plug 'axvr/photon.vim'
+Plug 'owickstrom/vim-colors-paramount'
+Plug 'cideM/yui'
+Plug 'hardselius/warlock'
+Plug 'zekzekus/menguless'
 
 """"""""""""""""" Language specific
 " C++
@@ -32,15 +35,12 @@ Plug 'rhysd/vim-clang-format'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Javascript & typescript
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim' 
 
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-
-" Haskell
-Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 " Theme settings
@@ -53,12 +53,10 @@ endif
 
 syntax enable
 set background=dark
-colorscheme plain
 
-" Nofrils theme settings
-let g:nofrils_strbackgrounds=1
-let g:nofrils_heavycomments=1
-let g:nofrils_heavylinenumbers=1
+" Recommended themes: warlock (dark), menguless (dark), plan (dark), yui
+" (light)
+colorscheme menguless
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
