@@ -70,12 +70,17 @@ set number relativenumber
 " Use Unicode supporting encoding
 set encoding=utf-8
 
-set nocursorcolumn
 
+" Indentation
 set smarttab
 set cindent
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set smartindent
+
+" promt when exiting from an unsaved file
+set confirm
 
 " Replace tabs with spaces when saved
 set expandtab
@@ -84,10 +89,14 @@ set expandtab
 set autoindent
 
 " Highlight the current line
+au WinLeave * set nocursorline
+au WinEnter * set cursorline
 set cursorline
 
 " yank and copy to X clipboard
 set clipboard+=unnamed
+
+set matchtime=2
 
 " Set maximum history record
 set history=1000
@@ -104,6 +113,13 @@ set mousehide
 set wildmenu
 set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
+
+" Turn off sounds and visual bells
+set novisualbell
+set noerrorbells
+set visualbell t_vb=
+set t_vb=
+set tm=500
 
 " Better splits
 set splitright
@@ -296,3 +312,10 @@ inoremap <Esc> <nop>
 " add a save key binding instead of writing the command :w
 nnoremap <C-s> :w<CR>
 nmap <leader>w :w!<cr>
+
+" Select all
+map <Leader>sa ggVG"
+
+" shift h to head of line, shitf l to end of line
+nnoremap H ^
+nnoremap L $
