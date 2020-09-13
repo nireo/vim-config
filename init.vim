@@ -15,6 +15,10 @@ Plug 'junegunn/fzf.vim'
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
+" Status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Themes
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
@@ -50,6 +54,9 @@ endif
 
 syntax enable
 set background=dark
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme="minimalist"
 
 " Recommended themes: warlock (dark), menguless (dark), plan (dark), yui
 " (light)
