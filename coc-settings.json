@@ -6,5 +6,4 @@
       "filetypes": ["go"]
     }
   },
-  "clangd.semanticHighlighting": true
 }

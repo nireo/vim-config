@@ -15,9 +15,6 @@ Plug 'junegunn/fzf.vim'
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
-" Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 Plug 'djjcast/mirodark'
@@ -25,12 +22,14 @@ Plug 'andreypopp/vim-colors-plain'
 Plug 'cideM/yui'
 Plug 'hardselius/warlock'
 Plug 'zekzekus/menguless'
-Plug 'danilo-augusto/vim-afterglow'
+Plug 'danilo-augusto/vim-afterglow' 
+Plug 'olivertaylor/vacme' 
+Plug 'ajgrf/parchment'
+Plug 'plan9-for-vimspace/acme-colors'
 
-""""""""""""""""" Language specific
 " C++
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -53,14 +52,11 @@ if !has('gui_running')
 endif
 
 syntax enable
-set background=dark
-
-let g:airline_powerline_fonts = 1
-let g:airline_theme="minimalist"
+set background=light
 
 " Recommended themes: warlock (dark), menguless (dark), plan (dark), yui
 " (light)
-colorscheme menguless
+colorscheme parchment
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -329,3 +325,40 @@ map <Leader>sa ggVG"
 " shift h to head of line, shitf l to end of line
 nnoremap H ^
 nnoremap L $
+
+" Custom status bar
+
+" Custom functions if we want to add git branch status
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+" Display git branch like in vim-airline
+" set statusline+=%#PmenuSel#
+" set statusline+=%{StatuslineGit()}
+" set statusline+=%#LineNr#
+
+" %F full file path, %f file name
+set statusline+=\ %F
+set statusline+=%m
+set statusline+=%=
+set statusline+=%#CursorColumn#
+
+" Display vim
+" set statusline+=\ %y
+
+" Display file encoding and format
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+
+" Display % of file the cursor is at
+set statusline+=\ %p%%
+
+" display line:column
+set statusline+=\ %l:%c
