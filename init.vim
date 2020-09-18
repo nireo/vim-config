@@ -70,6 +70,8 @@ set number relativenumber
 " Use Unicode supporting encoding
 set encoding=utf-8
 
+" Enable automatic C program indenting
+set cin
 
 " Indentation
 set smarttab
@@ -96,7 +98,9 @@ set cursorline
 " yank and copy to X clipboard
 set clipboard+=unnamed
 
+" Tenths of a second to sho wthe matching paren
 set matchtime=2
+set showmatch 
 
 " Set maximum history record
 set history=1000
@@ -104,8 +108,13 @@ set history=1000
 " Faster redrawing
 set ttyfast
 
+" Threshold for reporting number of lines changed.
 set report=0
+
+" Number of pixel lines inserted between characters.
 set linespace=0
+
+" Hide the mouse while typing (only works with gvim)
 set mousehide
 
 
@@ -114,7 +123,7 @@ set wildmenu
 set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
 
-" Turn off sounds and visual bells
+" Turn off sounds and visual bells (gvim)
 set novisualbell
 set noerrorbells
 set visualbell t_vb=
@@ -125,6 +134,7 @@ set tm=500
 set splitright
 set splitbelow
 
+" Number of screen lines to use for the command-line
 set cmdheight=1
 
 set hidden 
@@ -362,3 +372,8 @@ set statusline+=\ %p%%
 
 " display line:column
 set statusline+=\ %l:%c
+
+" Select region and then type :Hash to hash your selection.
+" Useful for verifying that there aren't mistypes.
+ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
+ \| md5sum \| cut -c-6
