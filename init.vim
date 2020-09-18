@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/plugged')
-""""""""""""""""" Non language specific " Intellisense engine, with full language server protocal support (auto completion & auto imports)
+" Intellisense engine, with full language server protocal support (auto completion & auto imports)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Show git indications for added, modified and removed files
@@ -15,32 +15,25 @@ Plug 'junegunn/fzf.vim'
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
-
 " Themes
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'cideM/yui'
 Plug 'hardselius/warlock'
 Plug 'zekzekus/menguless'
 Plug 'danilo-augusto/vim-afterglow' 
-Plug 'olivertaylor/vacme' 
 Plug 'ajgrf/parchment'
-Plug 'plan9-for-vimspace/acme-colors'
+Plug 'sainnhe/gruvbox-material'
 
-" C++
+" C++ plugins
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-" Golang
+" Golang plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" Javascript & typescript
+" Javascript & typescript plugins
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim' 
-
-" Rust
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 call plug#end()
 
 " Theme settings
@@ -51,14 +44,14 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" Enable syntax highlighting
 syntax enable
-set background=light
 
-" Recommended themes: warlock (dark), menguless (dark), plan (dark), yui
-" (light)
-colorscheme parchment
+" set the default theme to be dark instead of light
+set background=dark
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" Set the colorscheme
+colorscheme afterglow
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -137,7 +130,9 @@ set splitbelow
 " Number of screen lines to use for the command-line
 set cmdheight=1
 
+" unload buffer when it is abandoned
 set hidden 
+
 set updatetime=300
 set timeoutlen=300
 set shortmess+=c
@@ -160,7 +155,6 @@ set ignorecase
 set incsearch
 set gdefault
 set smartcase
-set hlsearch
 
 " enable regular expressions
 set magic
@@ -196,6 +190,8 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
 " coc config
+"
+" coc extensions that should be installed
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -224,6 +220,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -240,7 +238,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Fuzzy file finder
+" Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
 
 " Coc related stuff
@@ -250,6 +248,7 @@ nmap <F2> <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+" Load style settings from a typescript.json file
 augroup mygroup
   autocmd!
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
@@ -276,6 +275,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" Different binding for different CocC commands
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
@@ -350,9 +350,9 @@ endfunction
 
 set statusline=
 " Display git branch like in vim-airline
-" set statusline+=%#PmenuSel#
-" set statusline+=%{StatuslineGit()}
-" set statusline+=%#LineNr#
+set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
 
 " %F full file path, %f file name
 set statusline+=\ %F
@@ -360,8 +360,8 @@ set statusline+=%m
 set statusline+=%=
 set statusline+=%#CursorColumn#
 
-" Display vim
-" set statusline+=\ %y
+" Display 'vim'
+set statusline+=\ %y
 
 " Display file encoding and format
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
