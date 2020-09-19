@@ -23,6 +23,7 @@ Plug 'zekzekus/menguless'
 Plug 'danilo-augusto/vim-afterglow' 
 Plug 'ajgrf/parchment'
 Plug 'sainnhe/gruvbox-material'
+Plug 'AlessandroYorba/Alduin'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -51,7 +52,7 @@ syntax enable
 set background=dark
 
 " Set the colorscheme
-colorscheme afterglow
+colorscheme gruvbox-material
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -348,15 +349,27 @@ function! StatuslineGit()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 
+let g:currentmode = {
+       \'n'  : 'normal',
+       \ 'v'  : 'visual',
+       \ 'V'  : 'v·block',
+       \ '' : 'v·block',
+       \ 'i'  : 'insert',
+       \ 'R'  : 'r',
+       \ 'Rv' : 'v·replace',
+       \ 'c'  : 'command',
+       \}
+
+
 set statusline=
 " Display git branch like in vim-airline
-set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}
+"set statusline+=%#PmenuSel#
+set statusline+=\[%{g:currentmode[mode()]}\]
 set statusline+=%#LineNr#
 
 " %F full file path, %f file name
-set statusline+=\ %F
-set statusline+=%m
+set statusline+=\ %f
+"set statusline+=%m
 set statusline+=%=
 set statusline+=%#CursorColumn#
 
@@ -367,11 +380,11 @@ set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 
-" Display % of file the cursor is at
-set statusline+=\ %p%%
-
 " display line:column
 set statusline+=\ %l:%c
+
+" Display % of file the cursor is at
+set statusline+=\ (%p%%)
 
 " Select region and then type :Hash to hash your selection.
 " Useful for verifying that there aren't mistypes.
