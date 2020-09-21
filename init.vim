@@ -18,12 +18,8 @@ Plug 'scrooloose/nerdcommenter'
 " Themes
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'hardselius/warlock'
-Plug 'zekzekus/menguless'
-Plug 'danilo-augusto/vim-afterglow' 
 Plug 'ajgrf/parchment'
 Plug 'sainnhe/gruvbox-material'
-Plug 'AlessandroYorba/Alduin'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -64,9 +60,6 @@ set number relativenumber
 " Use Unicode supporting encoding
 set encoding=utf-8
 
-" Enable automatic C program indenting
-set cin
-
 " Indentation
 set smarttab
 set cindent
@@ -85,19 +78,13 @@ set expandtab
 set autoindent
 
 " Highlight the current line
-au WinLeave * set nocursorline
-au WinEnter * set cursorline
 set cursorline
 
 " yank and copy to X clipboard
 set clipboard+=unnamed
 
-" Tenths of a second to sho wthe matching paren
-set matchtime=2
-set showmatch 
-
 " Set maximum history record
-set history=1000
+set history=500
 
 " Faster redrawing
 set ttyfast
@@ -110,7 +97,6 @@ set linespace=0
 
 " Hide the mouse while typing (only works with gvim)
 set mousehide
-
 
 " Decent wildmenu
 set wildmenu
@@ -191,7 +177,6 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
 " coc config
-"
 " coc extensions that should be installed
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -202,8 +187,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ 'coc-go',
   \ 'coc-html',
-  \ 'coc-clangd',
-  \ 'coc-rls'
+  \ 'coc-clangd'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -217,6 +201,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" refresh the language server by pressing c-space
 inoremap <silent><expr> <c-space> coc#refresh()
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -337,8 +322,7 @@ map <Leader>sa ggVG"
 nnoremap H ^
 nnoremap L $
 
-" Custom status bar
-
+"""""""""""""""" Custom status bar
 " Custom functions if we want to add git branch status
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
@@ -359,7 +343,6 @@ let g:currentmode = {
        \ 'Rv' : 'v·replace',
        \ 'c'  : 'command',
        \}
-
 
 set statusline=
 " Display git branch like in vim-airline
@@ -390,3 +373,5 @@ set statusline+=\ (%p%%)
 " Useful for verifying that there aren't mistypes.
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
+
+
