@@ -68,9 +68,6 @@ set shiftwidth=4
 set softtabstop=4
 set smartindent
 
-" promt when exiting from an unsaved file
-set confirm
-
 " Replace tabs with spaces when saved
 set expandtab
 
@@ -89,26 +86,10 @@ set history=500
 " Faster redrawing
 set ttyfast
 
-" Threshold for reporting number of lines changed.
-set report=0
-
-" Number of pixel lines inserted between characters.
-set linespace=0
-
-" Hide the mouse while typing (only works with gvim)
-set mousehide
-
 " Decent wildmenu
 set wildmenu
 set wildmode=list:longest
 set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
-
-" Turn off sounds and visual bells (gvim)
-set novisualbell
-set noerrorbells
-set visualbell t_vb=
-set t_vb=
-set tm=500
 
 " Better splits
 set splitright
@@ -143,9 +124,6 @@ set incsearch
 set gdefault
 set smartcase
 
-" enable regular expressions
-set magic
-
 " set unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -153,9 +131,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
-" Don't update the screen during macro and script execution
-set lazyredraw
 
 " Rooter configuration
 let g:rooter_patterns = ['.git', 'main.go', 'node_modules', '=src', 'Makefile', 'main.cpp']
@@ -316,7 +291,7 @@ nnoremap <C-s> :w<CR>
 nmap <leader>w :w!<cr>
 
 " Select all
-map <Leader>sa ggVG"
+map <leader>sa ggVG"
 
 " shift h to head of line, shitf l to end of line
 nnoremap H ^
@@ -345,6 +320,7 @@ let g:currentmode = {
        \}
 
 set statusline=
+
 " Display git branch like in vim-airline
 "set statusline+=%#PmenuSel#
 set statusline+=\[%{g:currentmode[mode()]}\]
@@ -364,7 +340,7 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 
 " display line:column
-set statusline+=\ %l:%c
+set statusline+=\ (%l:%c)
 
 " Display % of file the cursor is at
 set statusline+=\ (%p%%)
