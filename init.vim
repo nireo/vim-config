@@ -12,14 +12,18 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Vim statusbar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
 " Themes
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'ajgrf/parchment'
 Plug 'sainnhe/gruvbox-material'
+Plug 'tomasr/molokai'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -319,34 +323,35 @@ let g:currentmode = {
        \ 'c'  : 'command',
        \}
 
-set statusline=
+" set statusline=
 
 " Display git branch like in vim-airline
 "set statusline+=%#PmenuSel#
-set statusline+=\[%{g:currentmode[mode()]}\]
-set statusline+=%#LineNr#
+" set statusline+=\[%{g:currentmode[mode()]}\]
+" set statusline+=%#LineNr#
 
 " %F full file path, %f file name
-set statusline+=\ %f
+" set statusline+=\ %f
 "set statusline+=%m
-set statusline+=%=
-set statusline+=%#CursorColumn#
+" set statusline+=%=
+" set statusline+=%#CursorColumn#
 
 " Display 'vim'
-set statusline+=\ %y
+" set statusline+=\ %y
 
 " Display file encoding and format
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
+" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\[%{&fileformat}\]
 
 " display line:column
-set statusline+=\ (%l:%c)
+" set statusline+=\ (%l:%c)
 
 " Display % of file the cursor is at
-set statusline+=\ (%p%%)
+" set statusline+=\ (%p%%)
 
 " Select region and then type :Hash to hash your selection.
 " Useful for verifying that there aren't mistypes.
+
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
 

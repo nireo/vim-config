@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/eemil'
 let g:netrw_dirhist_1='/home/eemil/go/src/github.com/nireo/upfi/optimized_api'
 let g:netrw_dirhist_0='/home/eemil/go/src/github.com/nireo/upfi'
 let g:netrw_dirhist_9='/home/eemil/projects/dwm'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_6='/home/eemil/downloads'
 let g:netrw_dirhist_5='/home/eemil/.config'
 let g:netrw_dirhist_4='/home/eemil/go/src/github.com/nireo/forms/server'
 let g:netrw_dirhist_3='/home/eemil/go/src/github.com/nireo/forms'
-let g:netrw_dirhist_2='/home/eemil/.config/nvim'
