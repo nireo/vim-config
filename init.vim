@@ -23,7 +23,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'sainnhe/gruvbox-material'
-Plug 'tomasr/molokai'
+Plug 'AlessandroYorba/Alduin'
+Plug 'AlessandroYorba/Arcadia'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -297,31 +298,37 @@ nmap <leader>w :w!<cr>
 " Select all
 map <leader>sa ggVG"
 
+" Delete all
+map <leader>da ggVGdd
+
+" Copy all
+map <leader>ca ggVGy
+
 " shift h to head of line, shitf l to end of line
 nnoremap H ^
 nnoremap L $
 
 """""""""""""""" Custom status bar
 " Custom functions if we want to add git branch status
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
+"function! GitBranch()
+"  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+"endfunction
 
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
+"function! StatuslineGit()
+"  let l:branchname = GitBranch()
+"  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+"endfunction
 
-let g:currentmode = {
-       \'n'  : 'normal',
-       \ 'v'  : 'visual',
-       \ 'V'  : 'v·block',
-       \ '' : 'v·block',
-       \ 'i'  : 'insert',
-       \ 'R'  : 'r',
-       \ 'Rv' : 'v·replace',
-       \ 'c'  : 'command',
-       \}
+"let g:currentmode = {
+"       \'n'  : 'normal',
+"       \ 'v'  : 'visual',
+"       \ 'V'  : 'v·block',
+"       \ '' : 'v·block',
+"       \ 'i'  : 'insert',
+"       \ 'R'  : 'r',
+"       \ 'Rv' : 'v·replace',
+"       \ 'c'  : 'command',
+"       \}
 
 " set statusline=
 
@@ -354,5 +361,7 @@ let g:currentmode = {
 
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
+
+
 
 
