@@ -23,6 +23,10 @@ You can install additional coc extensions to have autocompletion for many differ
 
 Those are just examples of the coc extensions. A full list of implemented coc extensions can be found [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions).
 
+## Screenshot
+
+![Screenshot of editor](./editor-screenshot.png)
+
 ## Plugins
 
 ### Not language specific
@@ -43,6 +47,3 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   Javascript & Typescript
     -   [vim-prettier](https://github.com/vim-prettier)
     -   [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)
--   Rust
-    -   [rust.vim](https://github.com/rust-lang/rust.vim)
-    -   [vim-racer](https://github.com/racer-rust/vim-racer)
