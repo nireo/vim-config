@@ -206,8 +206,12 @@ function! s:show_documentation()
   endif
 endfunction
 
+"" Fuzzy file finder stuff
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
+
+" Always enable preview window on the right with 60% width
+let g:fzf_preview_window = 'right:65%'
 
 " Coc related stuff
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -238,9 +242,7 @@ nmap <silent> <C-d> <Plug>(coc-range-select)
 xmap <silent> <C-d> <Plug>(coc-range-select)
 
 command! -nargs=0 Format :call CocAction('format')
-
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Different binding for different CocC commands
@@ -260,6 +262,11 @@ let g:clang_format#style_options = {
             \ "AllowShortLoopsOnASingleLine": "false",
             \ "AllowShortBlocksOnASingleLine": "false",
             \ "Standard" : "C++11"}
+
+" c++ syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
 
 " Clang settings
 autocmd Filetype c, cpp, objc ClangFormatAutoEnable
