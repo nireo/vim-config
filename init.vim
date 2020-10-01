@@ -53,7 +53,9 @@ syntax enable
 set background=dark
 
 " Set the colorscheme
-colorscheme gruvbox-material
+colorscheme plain
+
+let g:airline_theme='minimalist'
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -251,6 +253,14 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "AllowShortLoopsOnASingleLine": "false",
+            \ "AllowShortBlocksOnASingleLine": "false",
+            \ "Standard" : "C++11"}
+
 " Clang settings
 autocmd Filetype c, cpp, objc ClangFormatAutoEnable
 " Format c, cpp, objc code on save
@@ -361,7 +371,4 @@ nnoremap L $
 
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
-
-
-
 
