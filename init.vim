@@ -52,8 +52,9 @@ syntax enable
 " set the default theme to be dark instead of light
 set background=dark
 
+let g:arcadia_Sunset = 1
 " Set the colorscheme
-colorscheme plain
+colorscheme arcadia
 
 let g:airline_theme='minimalist'
 
@@ -210,6 +211,20 @@ endfunction
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
 
+" Netrw settings
+nnoremap <silent> <F6> :Vexplore<CR>
+let g:netrw_liststyle = 3
+
+" Remove the big banner
+let g:netrw_banner = 0
+
+" Open new files in a vertical split
+let g:netrw_browse_split = 1
+
+" Make the size of the window 25% of the screen 
+let g:netrw_winsize = 25
+
+
 " Always enable preview window on the right with 60% width
 let g:fzf_preview_window = 'right:65%'
 
@@ -307,6 +322,8 @@ inoremap <right> <nop>
 
 " Disable the esc key for practice using C-k & C-j
 inoremap <Esc> <nop>
+
+
 
 " add a save key binding instead of writing the command :w
 nnoremap <C-s> :w<CR>
