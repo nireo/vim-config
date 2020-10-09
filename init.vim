@@ -25,6 +25,7 @@ Plug 'andreypopp/vim-colors-plain'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'AlessandroYorba/Arcadia'
+Plug 'jonathanfilip/vim-lucius'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -36,6 +37,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Javascript & typescript plugins
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim' 
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 " Theme settings
@@ -54,7 +59,7 @@ set background=dark
 
 let g:arcadia_Sunset = 1
 " Set the colorscheme
-colorscheme arcadia
+colorscheme lucius
 
 let g:airline_theme='minimalist'
 
@@ -170,7 +175,8 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ 'coc-go',
   \ 'coc-html',
-  \ 'coc-clangd'
+  \ 'coc-clangd',
+  \ 'coc-rls'
   \ ]
 
 inoremap <silent><expr> <TAB>
