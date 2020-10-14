@@ -24,8 +24,9 @@ Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
-Plug 'AlessandroYorba/Arcadia'
 Plug 'jonathanfilip/vim-lucius'
+Plug 'mkarmona/colorsbox'
+Plug 'liuchengxu/space-vim-dark'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -57,9 +58,10 @@ syntax enable
 " set the default theme to be dark instead of light
 set background=dark
 
-let g:arcadia_Sunset = 1
+let g:arcadia_Twilight = 1
 " Set the colorscheme
-colorscheme lucius
+colorscheme colorsbox-stnight
+
 
 let g:airline_theme='minimalist'
 
@@ -136,6 +138,7 @@ set ignorecase
 set incsearch
 set gdefault
 set smartcase
+set nohlsearch
 
 " set unix as the standard file type
 set ffs=unix,dos,mac
@@ -230,7 +233,6 @@ let g:netrw_browse_split = 1
 " Make the size of the window 25% of the screen 
 let g:netrw_winsize = 25
 
-
 " Always enable preview window on the right with 60% width
 let g:fzf_preview_window = 'right:65%'
 
@@ -282,6 +284,9 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "AllowShortLoopsOnASingleLine": "false",
             \ "AllowShortBlocksOnASingleLine": "false",
+            \ "AllowShortLambdasOnASingleLine": "false",
+            \ "AlignConsecutiveMacros": "true",
+            \ "AllowShortFunctionsOnASingleLine": "false", 
             \ "Standard" : "C++11"}
 
 " c++ syntax highlighting
@@ -328,8 +333,6 @@ inoremap <right> <nop>
 
 " Disable the esc key for practice using C-k & C-j
 inoremap <Esc> <nop>
-
-
 
 " add a save key binding instead of writing the command :w
 nnoremap <C-s> :w<CR>
@@ -402,9 +405,12 @@ nnoremap L $
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
 
+""""" Competitive programming
 """ Different commands use to run and test c++ applications right from vim
 autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR>
 " autocmd FileType cpp nnoremap   <leader>rm    :set makeprg=g++<CR>:make % -o %:r<CR>
 autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
 autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
+"""""
+
 
