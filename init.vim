@@ -26,7 +26,8 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'mkarmona/colorsbox'
-Plug 'liuchengxu/space-vim-dark'
+Plug 'sainnhe/sonokai'
+Plug 'lifepillar/vim-solarized8'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -58,12 +59,11 @@ syntax enable
 " set the default theme to be dark instead of light
 set background=dark
 
-let g:arcadia_Twilight = 1
 " Set the colorscheme
-colorscheme colorsbox-stnight
+colorscheme solarized8
 
-
-let g:airline_theme='minimalist'
+let g:airline_solarized_bg='dark'
+let g:airline_theme='solarized'
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -74,6 +74,9 @@ set number relativenumber
 
 " Use Unicode supporting encoding
 set encoding=utf-8
+
+" disable the cursor in normal mode
+set guicursor=
 
 " Indentation
 set smarttab
@@ -97,9 +100,6 @@ set clipboard+=unnamed
 
 " Set maximum history record
 set history=500
-
-" Faster redrawing
-set ttyfast
 
 " Decent wildmenu
 set wildmenu
@@ -138,7 +138,7 @@ set ignorecase
 set incsearch
 set gdefault
 set smartcase
-set nohlsearch
+set hlsearch
 
 " set unix as the standard file type
 set ffs=unix,dos,mac
@@ -234,7 +234,7 @@ let g:netrw_browse_split = 1
 let g:netrw_winsize = 25
 
 " Always enable preview window on the right with 60% width
-let g:fzf_preview_window = 'right:65%'
+let g:fzf_preview_window = 'right:70%'
 
 " Coc related stuff
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -351,66 +351,14 @@ map <leader>ca ggVGy
 nnoremap H ^
 nnoremap L $
 
-"""""""""""""""" Custom status bar
-" Custom functions if we want to add git branch status
-"function! GitBranch()
-"  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-"endfunction
-
-"function! StatuslineGit()
-"  let l:branchname = GitBranch()
-"  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-"endfunction
-
-"let g:currentmode = {
-"       \'n'  : 'normal',
-"       \ 'v'  : 'visual',
-"       \ 'V'  : 'v·block',
-"       \ '' : 'v·block',
-"       \ 'i'  : 'insert',
-"       \ 'R'  : 'r',
-"       \ 'Rv' : 'v·replace',
-"       \ 'c'  : 'command',
-"       \}
-
-" set statusline=
-
-" Display git branch like in vim-airline
-"set statusline+=%#PmenuSel#
-" set statusline+=\[%{g:currentmode[mode()]}\]
-" set statusline+=%#LineNr#
-
-" %F full file path, %f file name
-" set statusline+=\ %f
-"set statusline+=%m
-" set statusline+=%=
-" set statusline+=%#CursorColumn#
-
-" Display 'vim'
-" set statusline+=\ %y
-
-" Display file encoding and format
-" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-" set statusline+=\[%{&fileformat}\]
-
-" display line:column
-" set statusline+=\ (%l:%c)
-
-" Display % of file the cursor is at
-" set statusline+=\ (%p%%)
-
-" Select region and then type :Hash to hash your selection.
-" Useful for verifying that there aren't mistypes.
-
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
 
 """"" Competitive programming
-""" Different commands use to run and test c++ applications right from vim
+" Different commands use to run and test c++ applications right from vim
 autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR>
 " autocmd FileType cpp nnoremap   <leader>rm    :set makeprg=g++<CR>:make % -o %:r<CR>
 autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
 autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
-"""""
 
 
