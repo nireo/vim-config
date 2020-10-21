@@ -1,6 +1,7 @@
 " Neovim configuration of nireo
 " github.com/nireo/vim-config
 
+"""""""""""" PLUGINS
 call plug#begin('~/.vim/plugged')
 " Intellisense engine, with full language server protocal support (auto completion & auto imports)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -47,7 +48,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-" Theme settings
+"""""""""" THEME SETTINGS
+
 if has('termguicolors') 
   set termguicolors
 endif
@@ -64,9 +66,9 @@ set background=dark
 " Set the colorscheme
 colorscheme xcodedark
 
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
+
+"""""""""""""""""" SETTINGS 
 " switch line numbers to relative, but also include the current selected line
 " number
 set number relativenumber
@@ -148,6 +150,95 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
+
+
+
+""""""""""""" CUSTOM KEYBINDINGS & SETTINGS
+
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Add a new binding for the ESC-key since it is quite far away
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+snoremap <C-j> <Esc>
+xnoremap <C-j> <Esc>
+cnoremap <C-j> <C-c>
+onoremap <C-j> <Esc>
+lnoremap <C-j> <Esc>
+tnoremap <C-j> <Esc>
+
+nnoremap <C-k> <Esc>
+inoremap <C-k> <Esc>
+vnoremap <C-k> <Esc>
+snoremap <C-k> <Esc>
+xnoremap <C-k> <Esc>
+cnoremap <C-k> <C-c>
+onoremap <C-k> <Esc>
+lnoremap <C-k> <Esc>
+tnoremap <C-k> <Esc>
+
+" Disable array keys for practice
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Disable the esc key for practice using C-k & C-j
+inoremap <Esc> <nop>
+
+" add a save key binding instead of writing the command :w
+nnoremap <C-s> :w<CR>
+nmap <leader>w :w!<cr>
+
+" Select all
+map <leader>sa ggVG"
+
+" Delete all
+map <leader>da ggVGdd
+
+" Copy all
+map <leader>ca ggVGy
+
+" Custom split keybindings
+nnoremap <leader>h :<C-u>split<CR>
+nnoremap <leader>v :<C-u>vsplit<CR>
+
+" shift h to head of line, shitf l to end of line
+nnoremap H ^
+nnoremap L $
+
+" Abbreviations
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+" Remove all trailing whitespaces command
+command! FixWhitespace :%s/\s\+$//e
+
+ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
+ \| md5sum \| cut -c-6
+
+""""" Competitive programming
+" Different commands use to run and test c++ applications right from vim
+autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR>
+" autocmd FileType cpp nnoremap   <leader>rm    :set makeprg=g++<CR>:make % -o %:r<CR>
+autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
+autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
+
+
+
+
+""""""""""""" PLUGIN SETTINGS 
 
 " Rooter configuration
 let g:rooter_patterns = ['.git', 'main.go', 'node_modules', '=src', 'Makefile', 'main.cpp']
@@ -269,7 +360,7 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Different binding for different CocC commands
+" Different binding for different coc commands
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
@@ -279,6 +370,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" Custom clang formatting settings: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "false",
@@ -304,76 +396,6 @@ autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
-" Add a new binding for the ESC-key since it is quite far away
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-snoremap <C-j> <Esc>
-xnoremap <C-j> <Esc>
-cnoremap <C-j> <C-c>
-onoremap <C-j> <Esc>
-lnoremap <C-j> <Esc>
-tnoremap <C-j> <Esc>
-
-nnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-snoremap <C-k> <Esc>
-xnoremap <C-k> <Esc>
-cnoremap <C-k> <C-c>
-onoremap <C-k> <Esc>
-lnoremap <C-k> <Esc>
-tnoremap <C-k> <Esc>
-
-" Disable array keys for practice
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
-" Disable the esc key for practice using C-k & C-j
-inoremap <Esc> <nop>
-
-" add a save key binding instead of writing the command :w
-nnoremap <C-s> :w<CR>
-nmap <leader>w :w!<cr>
-
-" Select all
-map <leader>sa ggVG"
-
-" Delete all
-map <leader>da ggVGdd
-
-" Copy all
-map <leader>ca ggVGy
-
-" shift h to head of line, shitf l to end of line
-nnoremap H ^
-nnoremap L $
-
-" Abbreviations
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
-
-ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
- \| md5sum \| cut -c-6
-
-""""" Competitive programming
-" Different commands use to run and test c++ applications right from vim
-autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR>
-" autocmd FileType cpp nnoremap   <leader>rm    :set makeprg=g++<CR>:make % -o %:r<CR>
-autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
-autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
-
 " Airline settings
 let g:airline_theme = 'minimalist'
 let g:airline#extensions#branch#enabled = 1
@@ -385,4 +407,5 @@ let g:airline_solarized_bg='dark'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
 
