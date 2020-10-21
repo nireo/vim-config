@@ -1,3 +1,6 @@
+" Neovim configuration of nireo
+" github.com/nireo/vim-config
+
 call plug#begin('~/.vim/plugged')
 " Intellisense engine, with full language server protocal support (auto completion & auto imports)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,11 +26,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'sainnhe/gruvbox-material'
-Plug 'AlessandroYorba/Alduin'
-Plug 'jonathanfilip/vim-lucius'
 Plug 'mkarmona/colorsbox'
-Plug 'sainnhe/sonokai'
 Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-gruvbox8'
+Plug 'arzg/vim-colors-xcode'
+Plug 'crusoexia/vim-monokai'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -42,7 +45,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
-
 call plug#end()
 
 " Theme settings
@@ -60,10 +62,7 @@ syntax enable
 set background=dark
 
 " Set the colorscheme
-colorscheme solarized8
-
-let g:airline_solarized_bg='dark'
-let g:airline_theme='solarized'
+colorscheme xcodedark
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -74,9 +73,12 @@ set number relativenumber
 
 " Use Unicode supporting encoding
 set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
 
 " disable the cursor in normal mode
 set guicursor=
+highlight Cursor guifg=black guibg=white
 
 " Indentation
 set smarttab
@@ -136,7 +138,6 @@ set mouse=a
 " Better search
 set ignorecase
 set incsearch
-set gdefault
 set smartcase
 set hlsearch
 
@@ -351,6 +352,18 @@ map <leader>ca ggVGy
 nnoremap H ^
 nnoremap L $
 
+" Abbreviations
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
 ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
  \| md5sum \| cut -c-6
 
@@ -361,4 +374,15 @@ autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR
 autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
 autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
 
+" Airline settings
+let g:airline_theme = 'minimalist'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline_solarized_bg='dark'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
