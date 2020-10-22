@@ -43,6 +43,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Javascript & typescript plugins
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim' 
+Plug 'leafgarland/typescript-vim'
+
+" enhance syntax rendering in javascript
+Plug 'jelera/vim-javascript-syntax'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -66,6 +70,7 @@ set background=dark
 " Set the colorscheme
 colorscheme xcodedark
 
+let mapleader=','
 
 
 """""""""""""""""" SETTINGS 
@@ -178,6 +183,18 @@ onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
 
+" Close buffer
+noremap <leader> c :bd<CR>
+
+" Buffer navigation
+noremap <leader> z :bp<CR>
+noremap <leader> q :bp<CR>
+noremap <leader> z :bn<CR>
+noremap <leader> q :bn<CR>
+
+" Clear search
+nnoremap <silent> <leader><space> :noh<CR>
+
 " Disable array keys for practice
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -201,6 +218,11 @@ map <leader>da ggVGdd
 
 " Copy all
 map <leader>ca ggVGy
+
+" These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Custom split keybindings
 nnoremap <leader>h :<C-u>split<CR>
@@ -397,7 +419,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'violet'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
