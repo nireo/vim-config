@@ -86,6 +86,20 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" Indentation
+set smarttab
+set cindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smartindent
+
+" Replace tabs with spaces when saved
+set expandtab
+
+" Automatically insert tabs or spaces when you write code
+set autoindent
+
 " disable the cursor in normal mode
 set guicursor=
 highlight Cursor guifg=black guibg=white
