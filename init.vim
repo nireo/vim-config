@@ -12,6 +12,8 @@ Plug 'airblade/vim-gitgutter'
 " Detect a root directory 
 Plug 'airblade/vim-rooter'
 
+" Check 
+
 "FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -28,10 +30,11 @@ Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'sainnhe/gruvbox-material'
 Plug 'mkarmona/colorsbox'
-Plug 'lifepillar/vim-solarized8'
-Plug 'lifepillar/vim-gruvbox8'
 Plug 'arzg/vim-colors-xcode'
-Plug 'crusoexia/vim-monokai'
+Plug 'nightsense/carbonized'
+Plug 'chriskempson/base16-vim'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'ajh17/Spacegray.vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -68,7 +71,7 @@ syntax enable
 set background=dark
 
 " Set the colorscheme
-colorscheme xcodedark
+colorscheme carbonized-dark
 
 let mapleader=','
 
@@ -87,21 +90,12 @@ set fileencodings=utf-8
 set guicursor=
 highlight Cursor guifg=black guibg=white
 
-" Indentation
-set smarttab
-set cindent
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smartindent
+" Show matching brackets
+set showmatch
+set matchtime=2
+set linespace=0
 
-" Replace tabs with spaces when saved
-set expandtab
-
-" Automatically insert tabs or spaces when you write code
-set autoindent
-
-" Highlight the current line
+" Indentation Highlight the current line
 set cursorline
 
 " yank and copy to X clipboard
@@ -156,8 +150,6 @@ set nobackup
 set nowb
 set noswapfile
 
-
-
 """"""""""""" CUSTOM KEYBINDINGS & SETTINGS
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -187,10 +179,27 @@ tnoremap <C-k> <Esc>
 noremap <leader> c :bd<CR>
 
 " Buffer navigation
-noremap <leader> z :bp<CR>
-noremap <leader> q :bp<CR>
-noremap <leader> z :bn<CR>
-noremap <leader> q :bn<CR>
+map <Leader>a :bprev<Return>
+map <Leader>s :bnext<Return>
+nnoremap <silent> <Leader>bf :bfirst<CR>
+nnoremap <silent> <Leader>bl :blast<CR>
+
+" Better window mapping
+nnoremap <Leader>wj <C-W>j
+nnoremap <Leader>wk <C-W>k
+nnoremap <Leader>wh <C-W>h
+nnoremap <Leader>wl <C-W>l
+nnoremap <Leader>wJ :resize +5<CR>
+nnoremap <Leader>wK :resize -5<CR>
+
+" CTRL-C to copy
+vmap <C-c> y
+
+" CTRL-X to cut
+vmap <C-x> x
+
+" CTRL V to paste
+imap <C-v> <esc>P
 
 " Clear search
 nnoremap <silent> <leader><space> :noh<CR>
@@ -256,9 +265,6 @@ autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR
 " autocmd FileType cpp nnoremap   <leader>rm    :set makeprg=g++<CR>:make % -o %:r<CR>
 autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
 autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
-
-
-
 
 """"""""""""" PLUGIN SETTINGS 
 
@@ -402,7 +408,7 @@ let g:clang_format#style_options = {
             \ "AllowShortLambdasOnASingleLine": "false",
             \ "AlignConsecutiveMacros": "true",
             \ "AllowShortFunctionsOnASingleLine": "false", 
-            \ "Standard" : "C++11"}
+            \ "Standard" : "c++17"}
 
 " c++ syntax highlighting
 let g:cpp_class_scope_highlight = 1
@@ -419,7 +425,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'violet'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
