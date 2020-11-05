@@ -31,7 +31,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'nightsense/carbonized'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'ajh17/Spacegray.vim'
-Plug 'lokaltog/vim-distinguished' 
+Plug 'liuchengxu/space-vim-dark'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -55,9 +55,9 @@ call plug#end()
 
 """""""""" THEME SETTINGS
 
-if has('termguicolors') 
-  set termguicolors
-endif
+"if has('termguicolors') 
+"  set termguicolors
+"endif
 if !has('gui_running')
   set t_Co=256
 endif
@@ -68,8 +68,9 @@ syntax enable
 " set the default theme to be dark instead of light
 set background=dark
 
+let g:space_vim_dark_background = 233
 " Set the colorscheme
-colorscheme spacegray
+colorscheme space-vim-dark
 
 let mapleader=','
 
@@ -215,6 +216,13 @@ vmap <C-x> x
 " CTRL V to paste
 imap <C-v> <esc>P
 
+" Yank from cursor position to end-of-line
+nnoremap Y y$
+
+" Duplicate lines
+nnoremap <Leader>d m`YP``
+vnoremap <Leader>d YPgv
+
 " Clear search
 nnoremap <silent> <leader><space> :noh<CR>
 
@@ -266,6 +274,15 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+cnoreabbrev qw wq
+cnoreabbrev Qa qa
+
+" fast saving from all modes
+nnoremap <Leader>w :write<CR>
+xnoremap <Leader>w <Esc>:write<CR>
+nnoremap <C-s> :<C-u>write<CR>
+xnoremap <C-s> :<C-u>write<CR>
+cnoremap <C-s> <C-u>write<CR>
 
 " Remove all trailing whitespaces command
 command! FixWhitespace :%s/\s\+$//e
@@ -430,7 +447,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'violet'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
