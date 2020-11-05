@@ -12,8 +12,6 @@ Plug 'airblade/vim-gitgutter'
 " Detect a root directory 
 Plug 'airblade/vim-rooter'
 
-" Check 
-
 "FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -28,13 +26,12 @@ Plug 'scrooloose/nerdcommenter'
 " Themes
 Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'sainnhe/gruvbox-material'
 Plug 'mkarmona/colorsbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'nightsense/carbonized'
-Plug 'chriskempson/base16-vim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'ajh17/Spacegray.vim'
+Plug 'lokaltog/vim-distinguished' 
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -47,6 +44,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim' 
 Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
 
 " enhance syntax rendering in javascript
 Plug 'jelera/vim-javascript-syntax'
@@ -71,7 +69,7 @@ syntax enable
 set background=dark
 
 " Set the colorscheme
-colorscheme carbonized-dark
+colorscheme spacegray
 
 let mapleader=','
 
@@ -101,8 +99,8 @@ set expandtab
 set autoindent
 
 " disable the cursor in normal mode
-set guicursor=
-highlight Cursor guifg=black guibg=white
+" set guicursor=
+" highlight Cursor guifg=black guibg=white
 
 " Show matching brackets
 set showmatch
@@ -189,6 +187,8 @@ onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
 
+nnoremap <F3> :set hlsearch!<CR>
+
 " Close buffer
 noremap <leader> c :bd<CR>
 
@@ -269,16 +269,6 @@ cnoreabbrev Qall qall
 
 " Remove all trailing whitespaces command
 command! FixWhitespace :%s/\s\+$//e
-
-ca Hash w !cpp -dD -P -fpreprocessed \| tr -d '[:space:]' \
- \| md5sum \| cut -c-6
-
-""""" Competitive programming
-" Different commands use to run and test c++ applications right from vim
-autocmd FileType cpp nnoremap     <leader>rm    :!g++ -g --std=c++11 % -o %:r<CR>
-" autocmd FileType cpp nnoremap   <leader>rm    :set makeprg=g++<CR>:make % -o %:r<CR>
-autocmd FileType cpp nnoremap     <leader>rr    :!./%:r<CR>
-autocmd FileType cpp nnoremap     <leader>rt    :!for f in %:r.*.test; do echo "TEST: $f"; ./%:r < $f; done<CR>
 
 """"""""""""" PLUGIN SETTINGS 
 
@@ -422,6 +412,7 @@ let g:clang_format#style_options = {
             \ "AllowShortLambdasOnASingleLine": "false",
             \ "AlignConsecutiveMacros": "true",
             \ "AllowShortFunctionsOnASingleLine": "false", 
+            \ "ColumnLimit": 120,
             \ "Standard" : "c++17"}
 
 " c++ syntax highlighting
@@ -444,10 +435,10 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
-let g:airline_solarized_bg='dark'
 
+" vim airline fonts
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols= {}
 endif
 
 
