@@ -16,6 +16,9 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Nerd tree
+Plug 'preservim/nerdtree'
+
 " Vim statusbar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -361,18 +364,10 @@ endfunction
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
 
-" Netrw settings
-nnoremap <silent> <F6> :Vexplore<CR>
-let g:netrw_liststyle = 3
-
-" Remove the big banner
-let g:netrw_banner = 0
-
-" Open new files in a vertical split
-let g:netrw_browse_split = 1
-
-" Make the size of the window 25% of the screen 
-let g:netrw_winsize = 25
+nnoremap <F4> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
+    
 
 " Always enable preview window on the right with 60% width
 let g:fzf_preview_window = 'right:70%'
