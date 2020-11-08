@@ -19,7 +19,7 @@ Plug 'junegunn/fzf.vim'
 " Nerd tree
 Plug 'preservim/nerdtree'
 
-" Vim statusbar
+" A lightweight status bar built with vimscript
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -31,10 +31,7 @@ Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'mkarmona/colorsbox'
 Plug 'arzg/vim-colors-xcode'
-Plug 'nightsense/carbonized'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'ajh17/Spacegray.vim'
-Plug 'liuchengxu/space-vim-dark'
+Plug 'robertmeta/nofrils'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -58,12 +55,13 @@ call plug#end()
 
 """""""""" THEME SETTINGS
 
-"if has('termguicolors') 
-"  set termguicolors
-"endif
+if has('termguicolors') 
+  set termguicolors
+endif
 if !has('gui_running')
   set t_Co=256
 endif
+
 
 " Enable syntax highlighting
 syntax enable
@@ -71,12 +69,13 @@ syntax enable
 " set the default theme to be dark instead of light
 set background=dark
 
-let g:space_vim_dark_background = 233
-" Set the colorscheme
-colorscheme space-vim-dark
+let g:nofrils_heavylinenumber = 1
+let g:nofrils_strbackgrounds = 1
+let g:nofrils_heavycomment = 1
+let g:space_vim_dark_background = 234
+colorscheme nofrils-dark
 
 let mapleader=','
-
 
 """""""""""""""""" SETTINGS 
 " switch line numbers to relative, but also include the current selected line
@@ -103,7 +102,7 @@ set expandtab
 set autoindent
 
 " disable the cursor in normal mode
-" set guicursor=
+set guicursor=
 " highlight Cursor guifg=black guibg=white
 
 " Show matching brackets
@@ -130,7 +129,7 @@ set splitright
 set splitbelow
 
 " Number of screen lines to use for the command-line
-set cmdheight=1
+set cmdheight=2
 
 " unload buffer when it is abandoned
 set hidden 
@@ -165,6 +164,15 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
+
+" Fix backspace indent
+set backspace=indent,eol,start
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
 
 """"""""""""" CUSTOM KEYBINDINGS & SETTINGS
 
@@ -363,14 +371,23 @@ endfunction
 "" Fuzzy file finder stuff
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-b> :Buffers<CR>
 
-nnoremap <F4> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '^node_modules$']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 50
     
 
 " Always enable preview window on the right with 60% width
 let g:fzf_preview_window = 'right:70%'
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 " Coc related stuff
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -442,7 +459,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'violet'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -453,4 +470,7 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols= {}
 endif
 
-
+"""" CUSTOM FILE TYPE CONFIGS
+autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
