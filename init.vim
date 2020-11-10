@@ -62,7 +62,6 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-
 " Enable syntax highlighting
 syntax enable
 
@@ -73,7 +72,7 @@ let g:nofrils_heavylinenumber = 1
 let g:nofrils_strbackgrounds = 1
 let g:nofrils_heavycomment = 1
 let g:space_vim_dark_background = 234
-colorscheme nofrils-dark
+colorscheme plain
 
 let mapleader=','
 
@@ -459,7 +458,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'hybrid'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -474,3 +473,22 @@ endif
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+augroup go
+    au!
+    au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
+    au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
+    au FileType go nmap <Leader>db <Plug>(go-doc-browser)
+
+    au FileType go nmap <leader>r  <Plug>(go-run)
+    au FileType go nmap <leader>t  <Plug>(go-test)
+    au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
+    au FileType go nmap <Leader>i <Plug>(go-info)
+    au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
+    au FileType go nmap <C-g> :GoDecls<cr>
+    au FileType go nmap <leader>dr :GoDeclsDir<cr>
+    au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
+    au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
+    au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
+augroup END
