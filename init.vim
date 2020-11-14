@@ -32,6 +32,9 @@ Plug 'andreypopp/vim-colors-plain'
 Plug 'mkarmona/colorsbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'robertmeta/nofrils'
+Plug 'tomasiser/vim-code-dark'
+Plug 'junegunn/seoul256.vim'
+Plug 'sjl/badwolf'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -72,7 +75,7 @@ let g:nofrils_heavylinenumber = 1
 let g:nofrils_strbackgrounds = 1
 let g:nofrils_heavycomment = 1
 let g:space_vim_dark_background = 234
-colorscheme plain
+colorscheme codedark
 
 let mapleader=','
 
@@ -128,7 +131,7 @@ set splitright
 set splitbelow
 
 " Number of screen lines to use for the command-line
-set cmdheight=2
+set cmdheight=1
 
 " unload buffer when it is abandoned
 set hidden 
@@ -149,6 +152,9 @@ set linebreak
 
 " Enable mouse usage
 set mouse=a
+
+" Disable the default mode indicator
+set noshowmode
 
 " Better search
 set ignorecase
@@ -197,8 +203,6 @@ cnoremap <C-k> <C-c>
 onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
-
-nnoremap <F3> :set hlsearch!<CR>
 
 " Close buffer
 noremap <leader> c :bd<CR>
@@ -370,6 +374,8 @@ endfunction
 "" Fuzzy file finder stuff
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
+
+" Look at all buffers
 nnoremap <silent> <C-b> :Buffers<CR>
 
 nnoremap <F3> :NERDTreeToggle<CR>
@@ -383,8 +389,7 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
     
-
-" Always enable preview window on the right with 60% width
+" Always enable preview window on the right with 70% width
 let g:fzf_preview_window = 'right:70%'
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
@@ -402,8 +407,8 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -458,7 +463,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'hybrid'
+let g:airline_theme = 'violet'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
