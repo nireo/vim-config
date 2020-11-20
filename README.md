@@ -5,13 +5,14 @@ This repository includes all the configuration files that use with Vim. I'am cur
 ## Installation
 
 ```
-git clone https://github.com/nireo/vim-config ~/.config/nvim
+git clone https://github.com/nireo/nvim ~/.config/nvim
 ```
 
-Make sure you have all these dependencies installed with npm:
+You need to install different language providers for nvim:
 
 ```
 npm install -g coc.nvim neovim
+pip install neovim
 ```
 
 You can install additional coc extensions to have autocompletion for many different languages, for example:
@@ -19,6 +20,23 @@ You can install additional coc extensions to have autocompletion for many differ
 ```
 # golang, html, typescript, coc-clangd
 :CocInstall coc-go coc-html coc-tsserver coc-clangd
+```
+
+Or alternatively all extensions are listed in:
+
+```
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-go',
+  \ 'coc-html',
+  \ 'coc-clangd',
+  \ 'coc-rls'
+  \ ]
 ```
 
 Those are just examples of the coc extensions. A full list of implemented coc extensions can be found [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions).
@@ -35,7 +53,9 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 -   [fzf](https://github.com/junegunn/fzf)
 -   [fzf.vim](https://github.com/junegunn/fzf.vim)
--   [NERDCommenter](https://github.com/scrooloose/nerdcommenter)
+-   [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+-   [vim-rooter](https://github.com/airblade/vim-rooter)
+-   [nerdtree](https://github.com/preservim/nerdtree)
 
 ### Language specific
 
@@ -47,3 +67,7 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   Javascript & Typescript
     -   [vim-prettier](https://github.com/vim-prettier)
     -   [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)
+    -   [emmet-vim](https://github.com/mattn/emmet-vim)
+    -   [typescript-vim](https://github.com/leafgarland/typescript-vim)
+-   Rust
+    -   [rust.vim](https://github.com/rust-lang/rust.vim)

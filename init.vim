@@ -1,5 +1,5 @@
-" Neovim configuration of nireo
-" github.com/nireo/vim-config
+" nvim configuration by nireo
+" github.com/nireo/nvim
 
 """""""""""" PLUGINS
 call plug#begin('~/.vim/plugged')
@@ -35,7 +35,6 @@ Plug 'robertmeta/nofrils'
 Plug 'tomasiser/vim-code-dark'
 Plug 'junegunn/seoul256.vim'
 Plug 'sjl/badwolf'
-
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -75,7 +74,7 @@ let g:nofrils_heavylinenumber = 1
 let g:nofrils_strbackgrounds = 1
 let g:nofrils_heavycomment = 1
 let g:space_vim_dark_background = 234
-colorscheme codedark
+colorscheme goodwolf
 
 let mapleader=','
 
@@ -105,10 +104,8 @@ set autoindent
 
 " disable the cursor in normal mode
 set guicursor=
-" highlight Cursor guifg=black guibg=white
 
 " Show matching brackets
-set showmatch
 set matchtime=2
 set linespace=0
 
@@ -298,7 +295,6 @@ nnoremap <C-s> :<C-u>write<CR>
 xnoremap <C-s> :<C-u>write<CR>
 cnoremap <C-s> <C-u>write<CR>
 
-" Remove all trailing whitespaces command
 command! FixWhitespace :%s/\s\+$//e
 
 """"""""""""" PLUGIN SETTINGS 
@@ -463,7 +459,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'violet'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -480,6 +476,7 @@ autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
+" Define custom leader mappings for golang
 augroup go
     au!
     au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
