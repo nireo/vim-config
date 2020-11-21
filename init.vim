@@ -157,7 +157,6 @@ set noshowmode
 set ignorecase
 set incsearch
 set smartcase
-set hlsearch
 
 " set unix as the standard file type
 set ffs=unix,dos,mac
@@ -169,12 +168,6 @@ set noswapfile
 
 " Fix backspace indent
 set backspace=indent,eol,start
-
-if exists('$SHELL')
-    set shell=$SHELL
-else
-    set shell=/bin/sh
-endif
 
 """"""""""""" CUSTOM KEYBINDINGS & SETTINGS
 
@@ -384,10 +377,6 @@ let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
-    
-" Always enable preview window on the right with 70% width
-let g:fzf_preview_window = 'right:70%'
-let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 " Coc related stuff
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -402,9 +391,6 @@ augroup mygroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -464,11 +450,6 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
-
-" vim airline fonts
-if !exists('g:airline_symbols')
-	let g:airline_symbols= {}
-endif
 
 """" CUSTOM FILE TYPE CONFIGS
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
