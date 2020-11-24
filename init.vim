@@ -19,6 +19,9 @@ Plug 'junegunn/fzf.vim'
 " Nerd tree
 Plug 'preservim/nerdtree'
 
+" Discord rich presense
+Plug 'hugolgst/vimsence'
+
 " A lightweight status bar built with vimscript
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -450,6 +453,10 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
+
+" Discord rich presence settings
+let g:vimsense_small_text = 'nvim'
+let g:vimsense_small_image = 'neovim'
 
 """" CUSTOM FILE TYPE CONFIGS
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
