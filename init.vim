@@ -36,8 +36,9 @@ Plug 'mkarmona/colorsbox'
 Plug 'arzg/vim-colors-xcode'
 Plug 'robertmeta/nofrils'
 Plug 'tomasiser/vim-code-dark'
-Plug 'junegunn/seoul256.vim'
 Plug 'sjl/badwolf'
+Plug 'morhetz/gruvbox'
+
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -67,17 +68,20 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" Gruvbox theme settings
+let g:gruvbox_bold = 0
+let g:gruvbox_contrast_dark = 'medium' 
+let g:gruvbox_italic = 1
+
 " Enable syntax highlighting
 syntax enable
-
-" set the default theme to be dark instead of light
 set background=dark
 
 let g:nofrils_heavylinenumber = 1
 let g:nofrils_strbackgrounds = 1
 let g:nofrils_heavycomment = 1
 let g:space_vim_dark_background = 234
-colorscheme goodwolf
+colorscheme gruvbox
 
 let mapleader=','
 
@@ -429,6 +433,8 @@ let g:clang_format#style_options = {
             \ "AllowShortBlocksOnASingleLine": "false",
             \ "AllowShortLambdasOnASingleLine": "false",
             \ "AlignConsecutiveMacros": "true",
+            \ "AllowShortCaseLabelsOnASingleLine": "true",
+            \ "AllowAllArgumentsOnNextLine": "true",
             \ "AllowShortFunctionsOnASingleLine": "false", 
             \ "ColumnLimit": 120,
             \ "Standard" : "c++17"}
@@ -448,7 +454,8 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
