@@ -30,14 +30,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 
 " Themes
-Plug 'djjcast/mirodark'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'mkarmona/colorsbox'
-Plug 'arzg/vim-colors-xcode'
 Plug 'robertmeta/nofrils'
 Plug 'tomasiser/vim-code-dark'
-Plug 'sjl/badwolf'
-Plug 'morhetz/gruvbox'
+Plug 'Lokaltog/vim-monotone'
+Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
+Plug 'sainnhe/edge'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/sonokai'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -54,9 +54,6 @@ Plug 'mattn/emmet-vim'
 
 " enhance syntax rendering in javascript
 Plug 'jelera/vim-javascript-syntax'
-
-" Rust
-Plug 'rust-lang/rust.vim'
 call plug#end()
 
 """""""""" THEME SETTINGS
@@ -68,20 +65,10 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-" Gruvbox theme settings
-let g:gruvbox_bold = 0
-let g:gruvbox_contrast_dark = 'medium' 
-let g:gruvbox_italic = 1
-
 " Enable syntax highlighting
 syntax enable
 set background=dark
-
-let g:nofrils_heavylinenumber = 1
-let g:nofrils_strbackgrounds = 1
-let g:nofrils_heavycomment = 1
-let g:space_vim_dark_background = 234
-colorscheme gruvbox
+colorscheme edge
 
 let mapleader=','
 
@@ -330,7 +317,6 @@ let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-html',
   \ 'coc-clangd',
-  \ 'coc-rls'
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -454,7 +440,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
 " Airline settings
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'violet'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -477,7 +463,6 @@ augroup go
     au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
     au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
     au FileType go nmap <Leader>db <Plug>(go-doc-browser)
-
     au FileType go nmap <leader>r  <Plug>(go-run)
     au FileType go nmap <leader>t  <Plug>(go-test)
     au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
