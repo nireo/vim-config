@@ -19,9 +19,6 @@ Plug 'junegunn/fzf.vim'
 " Nerd tree
 Plug 'preservim/nerdtree'
 
-" Discord rich presense
-Plug 'hugolgst/vimsence'
-
 " A lightweight status bar built with vimscript
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -31,13 +28,12 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes
 Plug 'andreypopp/vim-colors-plain'
-Plug 'robertmeta/nofrils'
-Plug 'tomasiser/vim-code-dark'
 Plug 'Lokaltog/vim-monotone'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/sonokai'
+Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -46,21 +42,18 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " Golang plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" Javascript & typescript plugins
+" Web development
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim' 
 Plug 'leafgarland/typescript-vim'
-Plug 'mattn/emmet-vim'
 
-" enhance syntax rendering in javascript
-Plug 'jelera/vim-javascript-syntax'
+" Rust plugins
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 """""""""" THEME SETTINGS
 
-if has('termguicolors') 
-  set termguicolors
-endif
+set termguicolors
 if !has('gui_running')
   set t_Co=256
 endif
@@ -68,9 +61,13 @@ endif
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme edge
+colorscheme base16-gruvbox-dark-hard
+let base16colorspace=256
 
-let mapleader=','
+" Make the comments brighter
+call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+
+let mapleader = "\<Space>"
 
 """""""""""""""""" SETTINGS 
 " switch line numbers to relative, but also include the current selected line
@@ -96,7 +93,7 @@ set expandtab
 " Automatically insert tabs or spaces when you write code
 set autoindent
 
-" disable the cursor in normal mode
+" Use the terminal defined cursor instead of the normal gui cursor
 set guicursor=
 
 " Show matching brackets
@@ -121,8 +118,8 @@ set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp
 set splitright
 set splitbelow
 
-" Number of screen lines to use for the command-line
-set cmdheight=1
+" Better display for messages
+set cmdheight=2
 
 " unload buffer when it is abandoned
 set hidden 
@@ -136,7 +133,7 @@ set signcolumn=yes
 set scrolloff=4
 
 " Always show where the cursor is
-set ruler
+"set ruler
 
 " Avoid wrapping a line in the middle of a word
 set linebreak
@@ -165,8 +162,9 @@ set backspace=indent,eol,start
 
 """"""""""""" CUSTOM KEYBINDINGS & SETTINGS
 
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+" Move by line
+nnoremap j gj
+nnoremap k gk
 
 " Add a new binding for the ESC-key since it is quite far away
 inoremap <C-j> <Esc>
@@ -204,6 +202,10 @@ nnoremap <Leader>wh <C-W>h
 nnoremap <Leader>wl <C-W>l
 nnoremap <Leader>wJ :resize +5<CR>
 nnoremap <Leader>wK :resize -5<CR>
+
+" stop searching
+vnoremap <C-h> :nohlsearch<cr>
+nnoremap <C-h> :nohlsearch<cr>
 
 " CTRL-C to copy
 vmap <C-c> y
@@ -317,6 +319,7 @@ let g:coc_global_extensions = [
   \ 'coc-go',
   \ 'coc-html',
   \ 'coc-clangd',
+  \ 'coc-rls',
   \ ]
 
 inoremap <silent><expr> <TAB>
@@ -429,6 +432,7 @@ let g:clang_format#style_options = {
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
 
 " Clang settings
 autocmd Filetype c, cpp, objc ClangFormatAutoEnable
@@ -439,17 +443,16 @@ autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
+" Automatically update rust files on save using rustfmt
+let g:rustfmt_autosave = 1
+
 " Airline settings
-let g:airline_theme = 'violet'
+let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
-
-" Discord rich presence settings
-let g:vimsense_small_text = 'nvim'
-let g:vimsense_small_image = 'neovim'
 
 """" CUSTOM FILE TYPE CONFIGS
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
