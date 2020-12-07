@@ -19,21 +19,25 @@ Plug 'junegunn/fzf.vim'
 " Nerd tree
 Plug 'preservim/nerdtree'
 
-" A lightweight status bar built with vimscript
+" A lightweight status bar built with vimscript 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
+" Discord rich presence
+Plug 'hugolgst/vimsence'
+
 " Themes
 Plug 'andreypopp/vim-colors-plain'
 Plug 'Lokaltog/vim-monotone'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
-Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
-Plug 'nanotech/jellybeans.vim'
-Plug 'chriskempson/base16-vim'
+Plug 'ewilazarus/preto'
+Plug 'arzg/vim-substrata'
+Plug 'pbrisbin/vim-colors-off'
+Plug 'AlessandroYorba/Alduin'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -49,9 +53,13 @@ Plug 'leafgarland/typescript-vim'
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 """""""""" THEME SETTINGS
+
+filetype plugin indent on
+syntax on
 
 set termguicolors
 if !has('gui_running')
@@ -61,11 +69,11 @@ endif
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme base16-gruvbox-dark-hard
-let base16colorspace=256
+colorscheme substrata
 
+"let base16colorspace=256
 " Make the comments brighter
-call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+"call Base16hi("Comment", g:base16_gui04, "", g:base16_cterm04, "", "", "")
 
 let mapleader = "\<Space>"
 
@@ -93,9 +101,6 @@ set expandtab
 " Automatically insert tabs or spaces when you write code
 set autoindent
 
-" Use the terminal defined cursor instead of the normal gui cursor
-set guicursor=
-
 " Show matching brackets
 set matchtime=2
 set linespace=0
@@ -119,7 +124,7 @@ set splitright
 set splitbelow
 
 " Better display for messages
-set cmdheight=2
+set cmdheight=1
 
 " unload buffer when it is abandoned
 set hidden 
@@ -289,7 +294,7 @@ command! FixWhitespace :%s/\s\+$//e
 """"""""""""" PLUGIN SETTINGS 
 
 " Rooter configuration
-let g:rooter_patterns = ['.git', 'main.go', 'node_modules', '=src', 'Makefile', 'main.cpp']
+let g:rooter_patterns = ['.git', 'main.go', 'node_modules', 'Makefile', 'main.cpp', 'Cargo.toml']
 
 " --- vim go (polyglot) settings.
 let g:go_highlight_build_constraints = 1
@@ -447,7 +452,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 let g:rustfmt_autosave = 1
 
 " Airline settings
-let g:airline_theme = 'base16'
+let g:airline_theme = 'minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -459,21 +464,3 @@ autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-
-" Define custom leader mappings for golang
-augroup go
-    au!
-    au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
-    au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
-    au FileType go nmap <Leader>db <Plug>(go-doc-browser)
-    au FileType go nmap <leader>r  <Plug>(go-run)
-    au FileType go nmap <leader>t  <Plug>(go-test)
-    au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
-    au FileType go nmap <Leader>i <Plug>(go-info)
-    au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
-    au FileType go nmap <C-g> :GoDecls<cr>
-    au FileType go nmap <leader>dr :GoDeclsDir<cr>
-    au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
-    au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
-    au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
-augroup END
