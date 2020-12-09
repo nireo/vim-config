@@ -34,10 +34,8 @@ Plug 'andreypopp/vim-colors-plain'
 Plug 'Lokaltog/vim-monotone'
 Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 Plug 'sainnhe/gruvbox-material'
-Plug 'ewilazarus/preto'
-Plug 'arzg/vim-substrata'
-Plug 'pbrisbin/vim-colors-off'
 Plug 'AlessandroYorba/Alduin'
+Plug 'axvr/photon.vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -58,10 +56,13 @@ call plug#end()
 
 """""""""" THEME SETTINGS
 
+" For syntax highlighting
 filetype plugin indent on
 syntax on
 
-set termguicolors
+if has('termguicolors')
+    set termguicolors
+endif
 if !has('gui_running')
   set t_Co=256
 endif
@@ -69,12 +70,10 @@ endif
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme substrata
+colorscheme photon
 
-"let base16colorspace=256
-" Make the comments brighter
-"call Base16hi("Comment", g:base16_gui04, "", g:base16_cterm04, "", "", "")
-
+" Use space as the leader key sincei can just keep my hands on the homerow all
+" the time.
 let mapleader = "\<Space>"
 
 """""""""""""""""" SETTINGS 
@@ -212,18 +211,6 @@ nnoremap <Leader>wK :resize -5<CR>
 vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
 
-" CTRL-C to copy
-vmap <C-c> y
-
-" CTRL-X to cut
-vmap <C-x> x
-
-" CTRL V to paste
-imap <C-v> <esc>P
-
-" Yank from cursor position to end-of-line
-nnoremap Y y$
-
 " Duplicate lines
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
@@ -268,7 +255,7 @@ nnoremap <leader>v :<C-u>vsplit<CR>
 nnoremap H ^
 nnoremap L $
 
-" Abbreviations
+" Abbreviations for common commands
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -294,9 +281,11 @@ command! FixWhitespace :%s/\s\+$//e
 """"""""""""" PLUGIN SETTINGS 
 
 " Rooter configuration
+" A quite common pattern is to use '=src', but It is kind of bad, when working
+" with rust, since cannot open the full directory.
 let g:rooter_patterns = ['.git', 'main.go', 'node_modules', 'Makefile', 'main.cpp', 'Cargo.toml']
 
-" --- vim go (polyglot) settings.
+" Different go syntax highlight settings
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -312,8 +301,7 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
-" coc config
-" coc extensions that should be installed
+" List of extensions to update and install
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -368,6 +356,8 @@ nnoremap <silent> <C-p> :Files<CR>
 " Look at all buffers
 nnoremap <silent> <C-b> :Buffers<CR>
 
+let g:fzf_layout = { 'down': '~25%' }
+
 nnoremap <F3> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
@@ -380,7 +370,6 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 
 " Coc related stuff
-autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <F2> <Plug>(coc-rename)
 
 xmap <leader>f  <Plug>(coc-format-selected)
