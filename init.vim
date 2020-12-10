@@ -20,8 +20,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
 " A lightweight status bar built with vimscript 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
@@ -36,6 +36,7 @@ Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'axvr/photon.vim'
+Plug 'AlessandroYorba/Sierra'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -67,10 +68,14 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+let g:alduin_Shout_Become_Ethereal = 1
+
+
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme photon
+colorscheme alduin
+
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
@@ -146,7 +151,7 @@ set linebreak
 set mouse=a
 
 " Disable the default mode indicator
-set noshowmode
+" set noshowmode
 
 " Better search
 set ignorecase
@@ -441,12 +446,12 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 let g:rustfmt_autosave = 1
 
 " Airline settings
-let g:airline_theme = 'minimalist'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
+" let g:airline_theme = 'minimalist'
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tagbar#enabled = 1
+" let g:airline_skip_empty_sections = 1
 
 """" CUSTOM FILE TYPE CONFIGS
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
