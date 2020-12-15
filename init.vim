@@ -19,10 +19,6 @@ Plug 'junegunn/fzf.vim'
 " Nerd tree
 Plug 'preservim/nerdtree'
 
-" A lightweight status bar built with vimscript 
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
@@ -37,6 +33,9 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'axvr/photon.vim'
 Plug 'AlessandroYorba/Sierra'
+Plug 'lifepillar/vim-solarized8'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'ajh17/Spacegray.vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -68,8 +67,7 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-let g:alduin_Shout_Become_Ethereal = 1
-
+let g:loaded_matchparen = 1
 
 " Enable syntax highlighting
 syntax enable
@@ -98,6 +96,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set smartindent
+
+set guicursor=
 
 " Replace tabs with spaces when saved
 set expandtab
@@ -157,6 +157,12 @@ set mouse=a
 set ignorecase
 set incsearch
 set smartcase
+
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " set unix as the standard file type
 set ffs=unix,dos,mac
@@ -235,7 +241,6 @@ inoremap <right> <nop>
 inoremap <Esc> <nop>
 
 " add a save key binding instead of writing the command :w
-nnoremap <C-s> :w<CR>
 nmap <leader>w :w!<cr>
 
 " Select all
@@ -274,12 +279,9 @@ cnoreabbrev Qall qall
 cnoreabbrev qw wq
 cnoreabbrev Qa qa
 
-" fast saving from all modes
+" Different keybindings to save
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
-nnoremap <C-s> :<C-u>write<CR>
-xnoremap <C-s> :<C-u>write<CR>
-cnoremap <C-s> <C-u>write<CR>
 
 command! FixWhitespace :%s/\s\+$//e
 
@@ -333,18 +335,18 @@ endfunction
 
 " refresh the language server by pressing c-space
 inoremap <silent><expr> <c-space> coc#refresh()
-
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
+" Go to the previous diagnostic
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" Go to the next diagnostic
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Go to definition
 nmap <silent> gd <Plug>(coc-definition)
 
-" Show documentation
+" Show documentation of the hovered item
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -390,6 +392,7 @@ augroup end
 nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Map function and class text objects
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
@@ -402,14 +405,19 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Different binding for different coc commands
+" Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Reumse latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Custom clang formatting settings: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
@@ -444,14 +452,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " Automatically update rust files on save using rustfmt
 let g:rustfmt_autosave = 1
-
-" Airline settings
-" let g:airline_theme = 'minimalist'
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#branch#enabled = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tagbar#enabled = 1
-" let g:airline_skip_empty_sections = 1
 
 """" CUSTOM FILE TYPE CONFIGS
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
