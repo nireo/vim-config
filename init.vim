@@ -22,20 +22,15 @@ Plug 'preservim/nerdtree'
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
-" Discord rich presence
-Plug 'hugolgst/vimsence'
-
-" Themes
+" Themes (CHANGES A LOT)
 Plug 'andreypopp/vim-colors-plain'
 Plug 'Lokaltog/vim-monotone'
-Plug 'ChristianChiarulli/nvcode-color-schemes.vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
-Plug 'axvr/photon.vim'
-Plug 'AlessandroYorba/Sierra'
 Plug 'lifepillar/vim-solarized8'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'ajh17/Spacegray.vim'
+Plug 'mswift42/vim-themes'
+Plug 'cocopon/iceberg.vim'
+Plug 'patstockwell/vim-monokai-tasty'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -67,12 +62,16 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" Do not highlight matching parenthesies, since this looks bad in some themes,
+" and isn't really needed.
 let g:loaded_matchparen = 1
 
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme alduin
+
+" warm-night, madrid, monotone, solarized8, alduin, soft-charcoal, iceberg
+colorscheme monotone
 
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
@@ -91,7 +90,6 @@ set fileencodings=utf-8
 
 " Indentation
 set smarttab
-set cindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
