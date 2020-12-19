@@ -67,7 +67,7 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   Javascript & Typescript
     -   [vim-prettier](https://github.com/vim-prettier)
     -   [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)
-    -   [emmet-vim](https://github.com/mattn/emmet-vim)
     -   [typescript-vim](https://github.com/leafgarland/typescript-vim)
 -   Rust
     -   [rust.vim](https://github.com/rust-lang/rust.vim)
+    -   [vim-racer](https://github.com/racer-rust/vim-racer)

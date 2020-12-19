@@ -28,9 +28,9 @@ Plug 'Lokaltog/vim-monotone'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'lifepillar/vim-solarized8'
-Plug 'mswift42/vim-themes'
 Plug 'cocopon/iceberg.vim'
-Plug 'patstockwell/vim-monokai-tasty'
+Plug 'ErichDonGubler/vim-sublime-monokai'
+Plug 'co1ncidence/bliss'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -55,12 +55,8 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
-if has('termguicolors')
-    set termguicolors
-endif
-if !has('gui_running')
-  set t_Co=256
-endif
+set termguicolors
+set t_Co=256
 
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
@@ -71,7 +67,7 @@ syntax enable
 set background=dark
 
 " warm-night, madrid, monotone, solarized8, alduin, soft-charcoal, iceberg
-colorscheme monotone
+colorscheme solarized8
 
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
@@ -95,8 +91,6 @@ set shiftwidth=4
 set softtabstop=4
 set smartindent
 
-set guicursor=
-
 " Replace tabs with spaces when saved
 set expandtab
 
@@ -116,23 +110,17 @@ set clipboard+=unnamed
 " Set maximum history record
 set history=500
 
-" Decent wildmenu
-set wildmenu
-set wildmode=list:longest
-set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor
-
 " Better splits
 set splitright
 set splitbelow
 
 " Better display for messages
-set cmdheight=1
+set cmdheight=2
 
 " unload buffer when it is abandoned
 set hidden 
 
 set updatetime=300
-set timeoutlen=300
 set shortmess+=c
 set signcolumn=yes
 
@@ -140,7 +128,7 @@ set signcolumn=yes
 set scrolloff=4
 
 " Always show where the cursor is
-"set ruler
+set ruler
 
 " Avoid wrapping a line in the middle of a word
 set linebreak
@@ -148,18 +136,15 @@ set linebreak
 " Enable mouse usage
 set mouse=a
 
-" Disable the default mode indicator
-" set noshowmode
-
 " Better search
 set ignorecase
 set incsearch
 set smartcase
 
-if has("patch-8.1.1564")
-  set signcolumn=number
+if exists('$SHELL')
+    set shell=$SHELL
 else
-  set signcolumn=yes
+    set shell=/bin/sj
 endif
 
 " set unix as the standard file type
@@ -263,7 +248,7 @@ nnoremap <leader>v :<C-u>vsplit<CR>
 nnoremap H ^
 nnoremap L $
 
-" Abbreviations for common commands
+" Abbreviations for different miss spellings of common commands
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -309,9 +294,8 @@ let g:go_auto_sameids = 1
 " List of extensions to update and install
 let g:coc_global_extensions = [
   \ 'coc-snippets',
-  \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
+  \ 'coc-eslint',
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ 'coc-go',
@@ -360,7 +344,6 @@ nnoremap <silent> <C-p> :Files<CR>
 
 " Look at all buffers
 nnoremap <silent> <C-b> :Buffers<CR>
-
 let g:fzf_layout = { 'down': '~25%' }
 
 nnoremap <F3> :NERDTreeToggle<CR>
