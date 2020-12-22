@@ -28,9 +28,7 @@ Plug 'Lokaltog/vim-monotone'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'lifepillar/vim-solarized8'
-Plug 'cocopon/iceberg.vim'
 Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'co1ncidence/bliss'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -69,7 +67,6 @@ set background=dark
 " warm-night, madrid, monotone, solarized8, alduin, soft-charcoal, iceberg
 colorscheme solarized8
 
-
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
 let mapleader = "\<Space>"
@@ -78,6 +75,8 @@ let mapleader = "\<Space>"
 " switch line numbers to relative, but also include the current selected line
 " number
 set number relativenumber
+
+set guicursor=
 
 " Use Unicode supporting encoding
 set encoding=utf-8
@@ -97,10 +96,6 @@ set expandtab
 " Automatically insert tabs or spaces when you write code
 set autoindent
 
-" Show matching brackets
-set matchtime=2
-set linespace=0
-
 " Indentation Highlight the current line
 set cursorline
 
@@ -113,9 +108,6 @@ set history=500
 " Better splits
 set splitright
 set splitbelow
-
-" Better display for messages
-set cmdheight=2
 
 " unload buffer when it is abandoned
 set hidden 
@@ -141,13 +133,7 @@ set ignorecase
 set incsearch
 set smartcase
 
-if exists('$SHELL')
-    set shell=$SHELL
-else
-    set shell=/bin/sj
-endif
-
-" set unix as the standard file type
+" Set the standard file type
 set ffs=unix,dos,mac
 
 " Turn backup off, just use git
@@ -232,7 +218,7 @@ map <leader>sa ggVG"
 " Delete all
 map <leader>da ggVGdd
 
-" Copy all
+" Copy all contents of a file to the clipboard
 map <leader>ca ggVGy
 
 " These will make it so that going to the next one in a
@@ -244,7 +230,8 @@ nnoremap N Nzzzv
 nnoremap <leader>h :<C-u>split<CR>
 nnoremap <leader>v :<C-u>vsplit<CR>
 
-" shift h to head of line, shitf l to end of line
+" H To move to the start of a line.
+" L to move to the end of a line.
 nnoremap H ^
 nnoremap L $
 
@@ -265,8 +252,6 @@ cnoreabbrev Qa qa
 " Different keybindings to save
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
-
-command! FixWhitespace :%s/\s\+$//e
 
 """"""""""""" PLUGIN SETTINGS 
 
@@ -358,8 +343,6 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 
 " Coc related stuff
-nmap <F2> <Plug>(coc-rename)
-
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
@@ -369,9 +352,6 @@ augroup mygroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 xmap if <Plug>(coc-funcobj-i)
@@ -398,7 +378,7 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Reumse latest coc list
+" Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Custom clang formatting settings: https://clang.llvm.org/docs/ClangFormatStyleOptions.html

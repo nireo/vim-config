@@ -71,3 +71,14 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   Rust
     -   [rust.vim](https://github.com/rust-lang/rust.vim)
     -   [vim-racer](https://github.com/racer-rust/vim-racer)
+
+## Themes
+
+These change quite often, since I like change up my themes.
+
+-   [vim-colors-plain](https://github.com/andreypopp/vim-colors-plain)
+-   [vim-monotone](https://github.com/Lokaltog/vim-monotone)
+-   [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+-   [Alduin](https://github.com/AlessandroYorba/Alduin)
+-   [vim-solarized8](https://github.com/lifepillar/vim-solarized8)
+-   [vim-sublime-monokai](https://github.com/ErichDonGubler/vim-sublime-monokai)
