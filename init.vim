@@ -28,7 +28,6 @@ Plug 'Lokaltog/vim-monotone'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'lifepillar/vim-solarized8'
-Plug 'ErichDonGubler/vim-sublime-monokai'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -56,10 +55,6 @@ syntax on
 set termguicolors
 set t_Co=256
 
-" Do not highlight matching parenthesies, since this looks bad in some themes,
-" and isn't really needed.
-let g:loaded_matchparen = 1
-
 " Enable syntax highlighting
 syntax enable
 set background=dark
@@ -77,6 +72,10 @@ let mapleader = "\<Space>"
 set number relativenumber
 
 set guicursor=
+
+" Do not highlight matching parenthesies, since this looks bad in some themes,
+" and isn't really needed.
+let g:loaded_matchparen = 1
 
 " Use Unicode supporting encoding
 set encoding=utf-8
@@ -212,6 +211,9 @@ inoremap <Esc> <nop>
 " add a save key binding instead of writing the command :w
 nmap <leader>w :w!<cr>
 
+" Exit and save the file
+nmap <leader>q :wq!<cr>
+
 " Select all
 map <leader>sa ggVG"
 
@@ -327,8 +329,6 @@ endfunction
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
 
-" Look at all buffers
-nnoremap <silent> <C-b> :Buffers<CR>
 let g:fzf_layout = { 'down': '~25%' }
 
 nnoremap <F3> :NERDTreeToggle<CR>

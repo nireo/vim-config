@@ -33,12 +33,14 @@ set scrolloff=4
 set ruler
 set linebreak
 set mouse=a
+
 set ignorecase
 set incsearch
 set gdefault
 set smartcase
 set hlsearch
 set ffs=unix,dos,mac
+
 set nobackup
 set nowb
 set noswapfile
@@ -61,6 +63,7 @@ cnoremap <C-k> <C-c>
 onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 inoremap <up> <nop>
@@ -68,3 +71,54 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap <C-s> :w<CR>
+
+" Different keybindings to save
+nnoremap <Leader>w :write<CR>
+xnoremap <Leader>w <Esc>:write<CR>
+
+" Custom split keybindings
+nnoremap <leader>h :<C-u>split<CR>
+nnoremap <leader>v :<C-u>vsplit<CR>
+
+" H To move to the start of a line.
+" L to move to the end of a line.
+nnoremap H ^
+nnoremap L $
+
+" Disable the esc key for practice using C-k & C-j
+inoremap <Esc> <nop>
+
+" add a save key binding instead of writing the command :w
+nmap <leader>w :w!<cr>
+
+" Exit and save the file
+nmap <leader>q :wq!<cr>
+
+" Select all
+map <leader>sa ggVG"
+
+" Delete all
+map <leader>da ggVGdd
+
+" Copy all contents of a file to the clipboard
+map <leader>ca ggVGy
+
+" Better window mapping
+nnoremap <Leader>wj <C-W>j
+nnoremap <Leader>wk <C-W>k
+nnoremap <Leader>wh <C-W>h
+nnoremap <Leader>wl <C-W>l
+nnoremap <Leader>wJ :resize +5<CR>
+nnoremap <Leader>wK :resize -5<CR>
+
+" stop searching
+vnoremap <C-h> :nohlsearch<cr>
+nnoremap <C-h> :nohlsearch<cr>
+
+" Duplicate lines
+nnoremap <Leader>d m`YP``
+vnoremap <Leader>d YPgv
+
+" Move by line
+nnoremap j gj
+nnoremap k gk
