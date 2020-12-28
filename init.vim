@@ -24,10 +24,9 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes (CHANGES A LOT)
 Plug 'andreypopp/vim-colors-plain'
-Plug 'Lokaltog/vim-monotone'
 Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
-Plug 'lifepillar/vim-solarized8'
+Plug 'liuchengxu/space-vim-dark'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -52,15 +51,14 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
-set termguicolors
 set t_Co=256
+set termguicolors
+hi LineNr ctermbg=NONE guibg=NONE
+colorscheme space-vim-dark
 
 " Enable syntax highlighting
 syntax enable
 set background=dark
-
-" warm-night, madrid, monotone, solarized8, alduin, soft-charcoal, iceberg
-colorscheme solarized8
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
@@ -71,6 +69,7 @@ let mapleader = "\<Space>"
 " number
 set number relativenumber
 
+" Disable the change of the cursor when in insert mode
 set guicursor=
 
 " Do not highlight matching parenthesies, since this looks bad in some themes,

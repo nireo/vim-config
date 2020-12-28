@@ -77,8 +77,6 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 These change quite often, since I like change up my themes.
 
 -   [vim-colors-plain](https://github.com/andreypopp/vim-colors-plain)
--   [vim-monotone](https://github.com/Lokaltog/vim-monotone)
 -   [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
--   [Alduin](https://github.com/AlessandroYorba/Alduin)
--   [vim-solarized8](https://github.com/lifepillar/vim-solarized8)
--   [vim-sublime-monokai](https://github.com/ErichDonGubler/vim-sublime-monokai)
+-   [alduin](https://github.com/AlessandroYorba/Alduin)
+-   [space-vim-dark](https://github.com/space-vim-dark)
