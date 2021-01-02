@@ -24,11 +24,12 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes (CHANGES A LOT)
 Plug 'andreypopp/vim-colors-plain'
-Plug 'sainnhe/gruvbox-material'
 Plug 'AlessandroYorba/Alduin'
 Plug 'liuchengxu/space-vim-dark'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sjl/badwolf'
+Plug 'doums/darcula'
+Plug 'chriskempson/base16-vim/'
 
 " Set rich presence in discord
 Plug 'hugolgst/vimsence'
@@ -56,13 +57,16 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
-set t_Co=256
-set termguicolors
-colorscheme badwolf
+if has('termguicolors')
+    set termguicolors
+end
 
-" Enable syntax highlighting
-syntax enable
+set t_Co=256
 set background=dark
+
+let base16colorspace=256
+colorscheme base16-grayscale-dark
+
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
@@ -72,9 +76,6 @@ let mapleader = "\<Space>"
 " switch line numbers to relative, but also include the current selected line
 " number
 set number relativenumber
-
-" Disable the change of the cursor when in insert mode
-set guicursor=
 
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
@@ -126,6 +127,9 @@ set ruler
 
 " Avoid wrapping a line in the middle of a word
 set linebreak
+
+" Disable vim's own mode status, since there is a normal status bar
+set noshowmode
 
 " Enable mouse usage
 set mouse=a
@@ -340,8 +344,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '^node_modules$']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 
