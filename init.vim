@@ -12,7 +12,7 @@ Plug 'airblade/vim-gitgutter'
 " Detect a root directory 
 Plug 'airblade/vim-rooter'
 
-"FuzzyFileFinder is for quickly searching files in directory
+" FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -24,12 +24,10 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes (CHANGES A LOT)
 Plug 'andreypopp/vim-colors-plain'
-Plug 'AlessandroYorba/Alduin'
-Plug 'liuchengxu/space-vim-dark'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sjl/badwolf'
-Plug 'doums/darcula'
 Plug 'chriskempson/base16-vim/'
+Plug 'xero/sourcerer.vim'
 
 " Set rich presence in discord
 Plug 'hugolgst/vimsence'
@@ -63,16 +61,13 @@ end
 
 set t_Co=256
 set background=dark
-
 let base16colorspace=256
-colorscheme base16-grayscale-dark
-
+colorscheme sourcerer
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
 let mapleader = "\<Space>"
 
-"""""""""""""""""" SETTINGS 
 " switch line numbers to relative, but also include the current selected line
 " number
 set number relativenumber
@@ -200,9 +195,6 @@ nnoremap <C-h> :nohlsearch<cr>
 " Duplicate lines
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
-
-" Clear search
-nnoremap <silent> <leader><space> :noh<CR>
 
 " Disable array keys for practice
 nnoremap <up> <nop>
@@ -399,7 +391,7 @@ let g:clang_format#style_options = {
             \ "AllowAllArgumentsOnNextLine": "true",
             \ "AllowShortFunctionsOnASingleLine": "false", 
             \ "ColumnLimit": 120,
-            \ "Standard" : "c++17"}
+            \ "Standard" : "c++11"}
 
 " c++ syntax highlighting
 let g:cpp_class_scope_highlight = 1

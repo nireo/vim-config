@@ -56,6 +56,7 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
 -   [vim-rooter](https://github.com/airblade/vim-rooter)
 -   [nerdtree](https://github.com/preservim/nerdtree)
+-   [vimsence](https://github.com/hugolgst/vimsence)
 
 ### Language specific
 
@@ -77,6 +78,7 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 These change quite often, since I like change up my themes.
 
 -   [vim-colors-plain](https://github.com/andreypopp/vim-colors-plain)
--   [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
--   [alduin](https://github.com/AlessandroYorba/Alduin)
--   [space-vim-dark](https://github.com/space-vim-dark)
+-   [sourcerer.vim](https://github.com/xero/sourcerer.vim)
+-   [base16-vim](https://github.com/chriskempson/base16-vim)
+-   [badwolf](https://github.com/sjl/badwolf)
+-   [vim-solarized8](https://github.com/lifepillar/vim-solarized8)
