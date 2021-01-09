@@ -16,9 +16,6 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Nerd tree
-Plug 'preservim/nerdtree'
-
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
@@ -26,11 +23,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'lifepillar/vim-solarized8'
 Plug 'sjl/badwolf'
-Plug 'chriskempson/base16-vim/'
 Plug 'xero/sourcerer.vim'
-
-" Set rich presence in discord
-Plug 'hugolgst/vimsence'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -61,7 +54,6 @@ end
 
 set t_Co=256
 set background=dark
-let base16colorspace=256
 colorscheme sourcerer
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
@@ -75,6 +67,8 @@ set number relativenumber
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
 let g:loaded_matchparen = 1
+
+set guicursor=
 
 " Use Unicode supporting encoding
 set encoding=utf-8
@@ -146,6 +140,7 @@ set noswapfile
 set backspace=indent,eol,start
 
 """"""""""""" CUSTOM KEYBINDINGS & SETTINGS
+command Preview :!brave %<CR>
 
 " Move by line
 nnoremap j gj
@@ -329,15 +324,6 @@ endfunction
 nnoremap <silent> <C-p> :Files<CR>
 
 let g:fzf_layout = { 'down': '~25%' }
-
-nnoremap <F3> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__', '^node_modules$']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
 
 " Coc related stuff
 xmap <leader>f  <Plug>(coc-format-selected)
