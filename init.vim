@@ -175,6 +175,21 @@ map <Leader>s :bnext<Return>
 nnoremap <silent> <Leader>bf :bfirst<CR>
 nnoremap <silent> <Leader>bl :blast<CR>
 
+" Remove trailing whitespaces
+nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
+
+" Find documentation of a keyword from cppreference
+let g:openbrowser_search_engines = extend(
+\ get(g:, 'openbrowser_search_engines', {}),
+\ {
+\   'cppreference': 'https://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search={query}',
+\ },
+\ 'keep'
+\)
+
+nnoremap <silent> <leader>osx :call openbrowser#smart_search(expand('<cword>'), "cppreference")<CR>
+
 " Better window mapping
 nnoremap <Leader>wj <C-W>j
 nnoremap <Leader>wk <C-W>k
