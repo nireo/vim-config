@@ -27,7 +27,10 @@ Plug 'xero/sourcerer.vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'bfrg/vim-cpp-modern'
+
+" Latex
+Plug 'lervag/vimtex'
 
 " Golang plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -178,18 +181,6 @@ nnoremap <silent> <Leader>bl :blast<CR>
 " Remove trailing whitespaces
 nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-
-" Find documentation of a keyword from cppreference
-let g:openbrowser_search_engines = extend(
-\ get(g:, 'openbrowser_search_engines', {}),
-\ {
-\   'cppreference': 'https://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search={query}',
-\ },
-\ 'keep'
-\)
-
-nnoremap <silent> <leader>osx :call openbrowser#smart_search(expand('<cword>'), "cppreference")<CR>
-
 " Better window mapping
 nnoremap <Leader>wj <C-W>j
 nnoremap <Leader>wk <C-W>k
@@ -286,6 +277,13 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
+
+" Latex settings
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " List of extensions to update and install
 let g:coc_global_extensions = [
@@ -394,11 +392,15 @@ let g:clang_format#style_options = {
             \ "ColumnLimit": 120,
             \ "Standard" : "c++11"}
 
-" c++ syntax highlighting
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
+
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+let g:cpp_simple_highlight = 1
 
 " Clang settings
 autocmd Filetype c, cpp, objc ClangFormatAutoEnable
