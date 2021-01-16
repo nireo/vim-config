@@ -21,9 +21,9 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes (CHANGES A LOT)
 Plug 'andreypopp/vim-colors-plain'
-Plug 'lifepillar/vim-solarized8'
 Plug 'sjl/badwolf'
 Plug 'xero/sourcerer.vim'
+Plug 'Lokaltog/vim-monotone'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -55,9 +55,11 @@ if has('termguicolors')
     set termguicolors
 end
 
+let g:monotone_emphasize_comments = 1 " Emphasize comments
+
 set t_Co=256
 set background=dark
-colorscheme sourcerer
+colorscheme monotone
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
@@ -70,8 +72,6 @@ set number relativenumber
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
 let g:loaded_matchparen = 1
-
-set guicursor=
 
 " Use Unicode supporting encoding
 set encoding=utf-8
@@ -211,6 +211,9 @@ inoremap <Esc> <nop>
 " add a save key binding instead of writing the command :w
 nmap <leader>w :w!<cr>
 
+" terminal emulation
+nnoremap <silent> <leader>sh :terminal<CR>
+
 " Exit and save the file
 nmap <leader>q :wq!<cr>
 
@@ -278,6 +281,11 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+let g:go_fmt_fail_silently = 1
+
 " Latex settings
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -337,6 +345,9 @@ endfunction
 nnoremap <silent> <C-p> :Files<CR>
 
 let g:fzf_layout = { 'down': '~25%' }
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 " Coc related stuff
 xmap <leader>f  <Plug>(coc-format-selected)
