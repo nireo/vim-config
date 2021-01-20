@@ -19,11 +19,11 @@ Plug 'junegunn/fzf.vim'
 " Improved comments
 Plug 'scrooloose/nerdcommenter'
 
-" Themes (CHANGES A LOT)
-Plug 'andreypopp/vim-colors-plain'
-Plug 'sjl/badwolf'
+" Themes
 Plug 'xero/sourcerer.vim'
 Plug 'Lokaltog/vim-monotone'
+Plug 'nanotech/jellybeans.vim'
+Plug 'pbrisbin/vim-colors-off'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -49,13 +49,15 @@ call plug#end()
 
 " For syntax highlighting
 filetype plugin indent on
-syntax on
+syntax off
 
 if has('termguicolors')
     set termguicolors
 end
 
+" Configuration of the monotone colorscheme
 let g:monotone_emphasize_comments = 1 " Emphasize comments
+let g:monotone_contrast_factor = 0.95
 
 set t_Co=256
 set background=dark
@@ -90,9 +92,6 @@ set expandtab
 
 " Automatically insert tabs or spaces when you write code
 set autoindent
-
-" Indentation Highlight the current line
-set cursorline
 
 " yank and copy to X clipboard
 set clipboard+=unnamed
@@ -130,6 +129,7 @@ set mouse=a
 set ignorecase
 set incsearch
 set smartcase
+
 
 " Set the standard file type
 set ffs=unix,dos,mac
@@ -453,5 +453,5 @@ set statusline+=%#CursorColumn#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
+set statusline+=\ (%p%%
+set statusline+=\ %l:%c)
