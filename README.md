@@ -55,14 +55,12 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 -   [fzf.vim](https://github.com/junegunn/fzf.vim)
 -   [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
 -   [vim-rooter](https://github.com/airblade/vim-rooter)
--   [nerdtree](https://github.com/preservim/nerdtree)
--   [vimsence](https://github.com/hugolgst/vimsence)
 
 ### Language specific
 
 -   C++
     -   [vim-cpp-enhanced-highlight](https://github.com/vim-cpp-enhanced-highlight)
-    -   [vim-clang-format](https://github.com/rhysd/vim-clang-format)
+    -   [vim-cpp-modern](https://github.com/bfrg/vim-cpp-modern)
 -   Go
     -   [vim-go](https://github.com/fatih/vim-go)
 -   Javascript & Typescript
@@ -77,8 +75,6 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 
 These change quite often, since I like change up my themes.
 
--   [vim-colors-plain](https://github.com/andreypopp/vim-colors-plain)
 -   [sourcerer.vim](https://github.com/xero/sourcerer.vim)
--   [base16-vim](https://github.com/chriskempson/base16-vim)
--   [badwolf](https://github.com/sjl/badwolf)
--   [vim-solarized8](https://github.com/lifepillar/vim-solarized8)
+-   [vim-monotone](https://github.com/Lokaltog/vim-monotone)
+-   [vim-colors-off](https://github.com/pbrisbin/vim-colors-off)

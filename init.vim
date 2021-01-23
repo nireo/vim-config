@@ -22,7 +22,6 @@ Plug 'scrooloose/nerdcommenter'
 " Themes
 Plug 'xero/sourcerer.vim'
 Plug 'Lokaltog/vim-monotone'
-Plug 'nanotech/jellybeans.vim'
 Plug 'pbrisbin/vim-colors-off'
 
 " C++ plugins
@@ -128,7 +127,13 @@ set mouse=a
 " Better search
 set ignorecase
 set incsearch
-set smartcase
+set smartcase    
+
+" Disable beep
+set noerrorbells
+if has('autocmd')
+  autocmd GUIEnter * set vb t_vb=
+endif
 
 
 " Set the standard file type
@@ -148,6 +153,9 @@ command Preview :!brave %<CR>
 " Move by line
 nnoremap j gj
 nnoremap k gk
+
+" Such that I dont have to press shift when wanting to use commands
+nnoremap ; :
 
 " Add a new binding for the ESC-key since it is quite far away
 inoremap <C-j> <Esc>
@@ -198,12 +206,17 @@ nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
 " Disable array keys for practice
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+
+map <Up>   <C-W>k
+map <Down> <C-W>j
+map <Left> <C-W>h
+map <Right> <C-W>l
 
 " Disable the esc key for practice using C-k & C-j
 inoremap <Esc> <nop>
@@ -239,6 +252,8 @@ nnoremap <leader>v :<C-u>vsplit<CR>
 " L to move to the end of a line.
 nnoremap H ^
 nnoremap L $
+nnoremap K {
+nnoremap J }
 
 " Abbreviations for different miss spellings of common commands
 cnoreabbrev W! w!
@@ -257,6 +272,7 @@ cnoreabbrev Qa qa
 " Different keybindings to save
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
+
 
 """"""""""""" PLUGIN SETTINGS 
 
