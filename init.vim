@@ -23,6 +23,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'xero/sourcerer.vim'
 Plug 'Lokaltog/vim-monotone'
 Plug 'pbrisbin/vim-colors-off'
+Plug 'tomasr/molokai'
+Plug 'aonemd/kuroi.vim'
+Plug 'nightsense/cosmic_latte'
+Plug 'romainl/apprentice'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -48,7 +52,7 @@ call plug#end()
 
 " For syntax highlighting
 filetype plugin indent on
-syntax off
+syntax on
 
 if has('termguicolors')
     set termguicolors
@@ -60,218 +64,14 @@ let g:monotone_contrast_factor = 0.95
 
 set t_Co=256
 set background=dark
-colorscheme monotone
+colorscheme molokai
 
 " Use space as the leader key sincei can just keep my hands on the homerow all
 " the time.
 let mapleader = "\<Space>"
 
-" switch line numbers to relative, but also include the current selected line
-" number
-set number relativenumber
-
-" Do not highlight matching parenthesies, since this looks bad in some themes,
-" and isn't really needed.
-let g:loaded_matchparen = 1
-
-" Use Unicode supporting encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-
-" Indentation
-set smarttab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smartindent
-
-" Replace tabs with spaces when saved
-set expandtab
-
-" Automatically insert tabs or spaces when you write code
-set autoindent
-
-" yank and copy to X clipboard
-set clipboard+=unnamed
-
-" Set maximum history record
-set history=500
-
-" Better splits
-set splitright
-set splitbelow
-
-" unload buffer when it is abandoned
-set hidden 
-
-set updatetime=300
-set shortmess+=c
-set signcolumn=yes
-
-" The amount of lines above and below the cursor
-set scrolloff=4
-
-" Always show where the cursor is
-set ruler
-
-" Avoid wrapping a line in the middle of a word
-set linebreak
-
-" Disable vim's own mode status, since there is a normal status bar
-set noshowmode
-
-" Enable mouse usage
-set mouse=a
-
-" Better search
-set ignorecase
-set incsearch
-set smartcase    
-
-" Disable beep
-set noerrorbells
-if has('autocmd')
-  autocmd GUIEnter * set vb t_vb=
-endif
-
-
-" Set the standard file type
-set ffs=unix,dos,mac
-
-" Turn backup off, just use git
-set nobackup
-set nowb
-set noswapfile
-
-" Fix backspace indent
-set backspace=indent,eol,start
-
-""""""""""""" CUSTOM KEYBINDINGS & SETTINGS
-command Preview :!brave %<CR>
-
-" Move by line
-nnoremap j gj
-nnoremap k gk
-
-" Such that I dont have to press shift when wanting to use commands
-nnoremap ; :
-
-" Add a new binding for the ESC-key since it is quite far away
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-snoremap <C-j> <Esc>
-xnoremap <C-j> <Esc>
-cnoremap <C-j> <C-c>
-onoremap <C-j> <Esc>
-lnoremap <C-j> <Esc>
-tnoremap <C-j> <Esc>
-
-nnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-snoremap <C-k> <Esc>
-xnoremap <C-k> <Esc>
-cnoremap <C-k> <C-c>
-onoremap <C-k> <Esc>
-lnoremap <C-k> <Esc>
-tnoremap <C-k> <Esc>
-
-" Close buffer
-noremap <leader> c :bd<CR>
-
-" Buffer navigation
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
-nnoremap <silent> <Leader>bf :bfirst<CR>
-nnoremap <silent> <Leader>bl :blast<CR>
-
-" Remove trailing whitespaces
-nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-
-" Better window mapping
-nnoremap <Leader>wj <C-W>j
-nnoremap <Leader>wk <C-W>k
-nnoremap <Leader>wh <C-W>h
-nnoremap <Leader>wl <C-W>l
-nnoremap <Leader>wJ :resize +5<CR>
-nnoremap <Leader>wK :resize -5<CR>
-
-" stop searching
-vnoremap <C-h> :nohlsearch<cr>
-nnoremap <C-h> :nohlsearch<cr>
-
-" Duplicate lines
-nnoremap <Leader>d m`YP``
-vnoremap <Leader>d YPgv
-
-" Disable array keys for practice
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-
-map <Up>   <C-W>k
-map <Down> <C-W>j
-map <Left> <C-W>h
-map <Right> <C-W>l
-
-" Disable the esc key for practice using C-k & C-j
-inoremap <Esc> <nop>
-
-" add a save key binding instead of writing the command :w
-nmap <leader>w :w!<cr>
-
-" terminal emulation
-nnoremap <silent> <leader>sh :terminal<CR>
-
-" Exit and save the file
-nmap <leader>q :wq!<cr>
-
-" Select all
-map <leader>sa ggVG"
-
-" Delete all
-map <leader>da ggVGdd
-
-" Copy all contents of a file to the clipboard
-map <leader>ca ggVGy
-
-" These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" Custom split keybindings
-nnoremap <leader>h :<C-u>split<CR>
-nnoremap <leader>v :<C-u>vsplit<CR>
-
-" H To move to the start of a line.
-" L to move to the end of a line.
-nnoremap H ^
-nnoremap L $
-nnoremap K {
-nnoremap J }
-
-" Abbreviations for different miss spellings of common commands
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
-cnoreabbrev qw wq
-cnoreabbrev Qa qa
-
-" Different keybindings to save
-nnoremap <Leader>w :write<CR>
-xnoremap <Leader>w <Esc>:write<CR>
+source ~/.config/nvim/src/settings.vim
+source ~/.config/nvim/src/mappings.vim
 
 
 """"""""""""" PLUGIN SETTINGS 
@@ -448,26 +248,3 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 
-"""" CUSTOM STATUSLINE 
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ (%p%%
-set statusline+=\ %l:%c)
