@@ -1,3 +1,8 @@
+" src/mappings.vim
+" This file contains all the custom mappings I've made for vim. There are lots
+" of bindings that I'm just testing.
+
+" Open the current buffer in the browser
 command Preview :!brave %<CR>
 
 " Move by line
@@ -36,9 +41,6 @@ map <Leader>s :bnext<Return>
 nnoremap <silent> <Leader>bf :bfirst<CR>
 nnoremap <silent> <Leader>bl :blast<CR>
 
-" Remove trailing whitespaces
-nnoremap <silent> <leader>rs :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-
 " Better window mapping
 nnoremap <Leader>wj <C-W>j
 nnoremap <Leader>wk <C-W>k
@@ -55,14 +57,8 @@ nnoremap <C-h> :nohlsearch<cr>
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
-" Disable array keys for practice
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-
+" Use the arrow keys for window navigation since I wasn't really using them
+" anyway so I decided to use them for something.
 map <Up>   <C-W>k
 map <Down> <C-W>j
 map <Left> <C-W>h

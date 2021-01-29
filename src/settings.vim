@@ -1,3 +1,7 @@
+" src/settings.vim
+" This file contains all the settings like `set hidden` and more. All of the
+" values are documented and explained why they are there.
+
 " switch line numbers to relative, but also include the current selected line
 " number
 set number relativenumber
@@ -102,3 +106,10 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ (%p%%
 set statusline+=\ %l:%c)
+
+" always show the signcolumn, otherwise it would shift the text each time
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
