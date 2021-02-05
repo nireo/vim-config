@@ -22,17 +22,11 @@ Plug 'scrooloose/nerdcommenter'
 " Themes
 Plug 'xero/sourcerer.vim'
 Plug 'Lokaltog/vim-monotone'
-Plug 'pbrisbin/vim-colors-off'
-Plug 'tomasr/molokai'
-Plug 'nightsense/cosmic_latte'
 Plug 'romainl/apprentice'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
-Plug 'bfrg/vim-cpp-modern'
-
-" Latex
-Plug 'lervag/vimtex'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Golang plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -57,8 +51,8 @@ end
 " Set the theme
 set t_Co=256
 set background=dark
+let g:space_vim_dark_background = 234
 colorscheme apprentice
-
 
 " Set the leader key to a good position, which is easy to access
 let mapleader = "\<Space>"

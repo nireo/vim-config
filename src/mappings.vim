@@ -2,9 +2,6 @@
 " This file contains all the custom mappings I've made for vim. There are lots
 " of bindings that I'm just testing.
 
-" Open the current buffer in the browser
-command Preview :!brave %<CR>
-
 " Move by line
 nnoremap j gj
 nnoremap k gk

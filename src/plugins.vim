@@ -28,13 +28,6 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_fmt_fail_silently = 1
 
-" Latex settings
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
 " List of extensions to update and install
 let g:coc_global_extensions = [
   \ 'coc-snippets',
@@ -46,6 +39,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-clangd',
   \ 'coc-rls',
+  \ 'coc-pyright'
   \ ]
 
 inoremap <silent><expr> <TAB>
