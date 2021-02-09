@@ -21,8 +21,9 @@ Plug 'scrooloose/nerdcommenter'
 
 " Themes
 Plug 'xero/sourcerer.vim'
-Plug 'Lokaltog/vim-monotone'
 Plug 'romainl/apprentice'
+Plug 'djjcast/mirodark'
+Plug 'ackyshake/Spacegray.vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'

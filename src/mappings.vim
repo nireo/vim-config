@@ -29,6 +29,9 @@ onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
 
+" Disable macro recorder
+nnoremap Q <NOP>
+
 " Close buffer
 noremap <leader> c :bd<CR>
 
@@ -115,3 +118,38 @@ cnoreabbrev Qa qa
 " Different keybindings to save
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
+
+let s:comment_map = {
+  \   "c": '\/\/ ',
+  \   "conf": '#',
+  \   "cpp": '\/\/ ',
+  \   "go": '// ',
+  \   "java": '\/\/ ',
+  \   "javascript": '\/\/ ',
+  \   "php": '// ',
+  \   "python": '# ',
+  \   "ruby": '# ',
+  \   "r": '#',
+  \   "tex": '%',
+  \   "vim": '" ',
+  \   "sh": '# ',
+  \ }
+
+function! ToggleComment()
+  if has_key(s:comment_map, &filetype)
+    let comment_leader = s:comment_map[&filetype]
+    if getline('.') =~ "^" . comment_leader
+    " Uncomment the line
+      execute "silent s/^" . comment_leader . "//"
+    else
+    " Comment the line
+      execute "silent s/^/" . comment_leader . "/"
+    endif
+  else
+    echo "No comment leader found for filetype"
+  end
+endfunction
+
+nnoremap <C-l> :call ToggleComment()<cr>
+vnoremap <C-l> :call ToggleComment()<cr>
+
