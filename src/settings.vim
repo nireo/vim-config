@@ -40,6 +40,9 @@ set clipboard+=unnamed
 " Set maximum history record
 set history=500
 
+" Automatically read when a file has changed from the outside
+set autoread
+
 " Better splits
 set splitright
 set splitbelow
@@ -60,23 +63,13 @@ set ruler
 " Avoid wrapping a line in the middle of a word
 set linebreak
 
-" Disable vim's own mode status, since there is a normal status bar
+" Disable vim's own mode status, since there is a custom statusline
 set noshowmode
-
-" Enable mouse usage
-set mouse=a
 
 " Better search
 set ignorecase
 set incsearch
 set smartcase    
-
-" Disable beep
-set noerrorbells
-if has('autocmd')
-  autocmd GUIEnter * set vb t_vb=
-endif
-
 
 " Set the standard file type
 set ffs=unix,dos,mac
@@ -142,9 +135,3 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ (%p%%
 set statusline+=\ %l:%c)
 
-" always show the signcolumn, otherwise it would shift the text each time
-if has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif

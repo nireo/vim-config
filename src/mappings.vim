@@ -9,6 +9,9 @@ nnoremap k gk
 " Such that I dont have to press shift when wanting to use commands
 nnoremap ; :
 
+" Toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
 " Add a new binding for the ESC-key since it is quite far away
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
@@ -94,6 +97,9 @@ nnoremap N Nzzzv
 nnoremap <leader>h :<C-u>split<CR>
 nnoremap <leader>v :<C-u>vsplit<CR>
 
+" Close the current window
+nnoremap <silent> <Leader>Q <C-w>c
+
 " H To move to the start of a line.
 " L to move to the end of a line.
 nnoremap H ^
@@ -126,10 +132,7 @@ let s:comment_map = {
   \   "go": '// ',
   \   "java": '\/\/ ',
   \   "javascript": '\/\/ ',
-  \   "php": '// ',
   \   "python": '# ',
-  \   "ruby": '# ',
-  \   "r": '#',
   \   "tex": '%',
   \   "vim": '" ',
   \   "sh": '# ',

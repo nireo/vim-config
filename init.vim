@@ -16,14 +16,10 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Improved comments
-Plug 'scrooloose/nerdcommenter'
-
 " Themes
 Plug 'xero/sourcerer.vim'
 Plug 'romainl/apprentice'
-Plug 'djjcast/mirodark'
-Plug 'ackyshake/Spacegray.vim'
+Plug 'Lokaltog/vim-monotone'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -52,8 +48,11 @@ end
 " Set the theme
 set t_Co=256
 set background=dark
-let g:space_vim_dark_background = 234
-colorscheme apprentice
+
+" Configure the monotone theme
+let g:monotone_emphasize_comments = 1 " Emphasize comments
+let g:monotone_contrast_factor = 0.95
+colorscheme monotone
 
 " Set the leader key to a good position, which is easy to access
 let mapleader = "\<Space>"

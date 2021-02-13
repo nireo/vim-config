@@ -80,7 +80,6 @@ endfunction
 " Binding for fuzzy file finder ctrl-p
 nnoremap <silent> <C-p> :Files<CR>
 
-let g:fzf_layout = { 'down': '~25%' }
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
@@ -136,7 +135,7 @@ let g:clang_format#style_options = {
             \ "AllowShortCaseLabelsOnASingleLine": "true",
             \ "AllowAllArgumentsOnNextLine": "true",
             \ "AllowShortFunctionsOnASingleLine": "false", 
-            \ "ColumnLimit": 120,
+            \ "ColumnLimit": 110,
             \ "Standard" : "c++11"}
 
 " Enable highlighting of C++11 attributes
@@ -144,10 +143,6 @@ let g:cpp_attributes_highlight = 1
 
 " Highlight struct/class member variables (affects both C and C++ files)
 let g:cpp_member_highlight = 1
-
-" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
-" (affects both C and C++ files)
-let g:cpp_simple_highlight = 1
 
 " Clang settings
 autocmd Filetype c, cpp, objc ClangFormatAutoEnable
@@ -160,8 +155,3 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " Automatically update rust files on save using rustfmt
 let g:rustfmt_autosave = 1
-
-" Configuration of the monotone colorscheme
-let g:monotone_emphasize_comments = 1 " Emphasize comments
-let g:monotone_contrast_factor = 0.95
-
