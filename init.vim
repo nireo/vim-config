@@ -1,4 +1,4 @@
-" nvim configuration by nireo
+"" nvim configuration by nireo
 " github.com/nireo/nvim
 
 """""""""""" PLUGINS
@@ -20,6 +20,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'xero/sourcerer.vim'
 Plug 'romainl/apprentice'
 Plug 'Lokaltog/vim-monotone'
+Plug 'chriskempson/base16-vim'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -51,8 +52,8 @@ set background=dark
 
 " Configure the monotone theme
 let g:monotone_emphasize_comments = 1 " Emphasize comments
-let g:monotone_contrast_factor = 0.95
-colorscheme monotone
+let g:monotone_contrast_factor = 0.90
+colorscheme base16-solarized-dark
 
 " Set the leader key to a good position, which is easy to access
 let mapleader = "\<Space>"
@@ -61,3 +62,4 @@ source ~/.config/nvim/src/settings.vim " Load the settings for example `set hidd
 source ~/.config/nvim/src/mappings.vim " Load all of the custom mappings
 source ~/.config/nvim/src/plugins.vim "Load all of the settings related to the plugins above.
 source ~/.config/nvim/src/filetypes.vim " Load all the custom settings for different filetypes
+source ~/.config/nvim/src/statusline.vim

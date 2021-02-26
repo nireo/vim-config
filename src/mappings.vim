@@ -35,9 +35,6 @@ tnoremap <C-k> <Esc>
 " Disable macro recorder
 nnoremap Q <NOP>
 
-" Close buffer
-noremap <leader> c :bd<CR>
-
 " Buffer navigation
 map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>

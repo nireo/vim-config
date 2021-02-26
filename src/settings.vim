@@ -15,11 +15,15 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" Disable the cursor in vim, instead use the one from the terminal
 set guicursor=
 
 " This is a macro execution optimization. This makes it so that the screen
 " doesn't get re-rendered after every macro, but it waits for it to finish.
 set lazyredraw
+
+" Remove duplicate spaces when joining
+set nojoinspaces
 
 " Indentation
 set smarttab
@@ -79,59 +83,18 @@ set nobackup
 set nowb
 set noswapfile
 
+" backspace fix
 set backspace=indent,eol,start
 
-"""" CUSTOM STATUSLINE 
-let g:modes={
-    \'n'  : 'normal ',
-    \'no' : 'n·operator pending ',
-    \'v'  : 'visual ',
-    \'V'  : 'v-line ',
-    \'^V' : 'v-block ',
-    \'s'  : 'select ',
-    \'S'  : 's-line ',
-    \'^S' : 's-block ',
-    \'i'  : 'insert ',
-    \'R'  : 'replace ',
-    \'Rv' : 'v-replace ',
-    \'c'  : 'command ',
-    \'cv' : 'vim ex ',
-    \'ce' : 'ex ',
-    \'r'  : 'prompt ',
-    \'rm' : 'more ',
-    \'r?' : 'confirm ',
-    \'!'  : 'sh',
-    \'t'  : 'term '
-    \}
+set signcolumn=no "Disable the column next to the line numbers since it makes some themes look bad.
 
-function! CurrentMode() abort
-    let l:currentmode = mode()
-    let l:modelist = get(g:modes, l:currentmode, 'V·Block ')
-    let l:current_status_mode = l:modelist
-    return ' '.l:current_status_mode.' '
-endfunction
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?''.l:branchname.'':''
-endfunction
-
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=\ %{CurrentMode()}
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=(%{StatuslineGit()})
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ (%p%%
-set statusline+=\ %l:%c)
-
+" Spelling check
+set spelllang=en_us   " Set US English for spell checking.
+" set spell           " Enable spell-check for all file types.
+" always put autocmd inside augroup (to avoid executing each time you source .vimrc)
+augroup forspellcheck
+  autocmd!
+" Enable spell checking for text, markdown and git commit only.
+  autocmd FileType text,markdown,gitcommit setlocal spell
+  autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
