@@ -86,12 +86,13 @@ set noswapfile
 " backspace fix
 set backspace=indent,eol,start
 
+" fix vim background changing in tmux
+set t_ut=
+
 set signcolumn=no "Disable the column next to the line numbers since it makes some themes look bad.
 
 " Spelling check
 set spelllang=en_us   " Set US English for spell checking.
-" set spell           " Enable spell-check for all file types.
-" always put autocmd inside augroup (to avoid executing each time you source .vimrc)
 augroup forspellcheck
   autocmd!
 " Enable spell checking for text, markdown and git commit only.

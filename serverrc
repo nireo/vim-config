@@ -1,10 +1,9 @@
-syntax enable
-set background=dark
-set number relativenumber
+syntax enable " enable syntax highlighting
+set background=dark " set the background to be dark
+set number relativenumber 
 set encoding=utf-8
-set confirm
+
 set smarttab
-set cindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -46,6 +45,7 @@ set nowb
 set noswapfile
 set lazyredraw
 
+" add new esc mapping 
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 snoremap <C-j> <Esc>
@@ -64,13 +64,13 @@ onoremap <C-k> <Esc>
 lnoremap <C-k> <Esc>
 tnoremap <C-k> <Esc>
 
+" disable arrow keys since you don't need them
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-nnoremap <C-s> :w<CR>
 
 " Different keybindings to save
 nnoremap <Leader>w :write<CR>
@@ -123,26 +123,3 @@ vnoremap <Leader>d YPgv
 nnoremap j gj
 nnoremap k gk
 
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c

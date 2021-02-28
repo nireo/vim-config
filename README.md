@@ -15,16 +15,10 @@ npm install -g coc.nvim neovim
 pip install neovim
 ```
 
-You can install additional coc extensions to have autocompletion for many different languages, for example:
+You can install additional coc.nvim extensions to have auto completion for many different languages, for example:
 
 ```
-# golang, html, typescript, coc-clangd
-:CocInstall coc-go coc-html coc-tsserver coc-clangd
-```
-
-Or alternatively all extensions are listed in:
-
-```
+" src/plugins.vim
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -49,32 +43,23 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 
 ### Not language specific
 
--   [coc.nvim](https://github.com/neoclide/coc.nvim)
--   [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
--   [fzf](https://github.com/junegunn/fzf)
--   [fzf.vim](https://github.com/junegunn/fzf.vim)
--   [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
--   [vim-rooter](https://github.com/airblade/vim-rooter)
+- [coc.nvim](https://github.com/neoclide/coc.nvim)
+- [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+- [fzf](https://github.com/junegunn/fzf)
+- [fzf.vim](https://github.com/junegunn/fzf.vim)
+- [vim-rooter](https://github.com/airblade/vim-rooter)
 
 ### Language specific
 
--   C++
-    -   [vim-cpp-enhanced-highlight](https://github.com/vim-cpp-enhanced-highlight)
-    -   [vim-cpp-modern](https://github.com/bfrg/vim-cpp-modern)
--   Go
-    -   [vim-go](https://github.com/fatih/vim-go)
--   Javascript & Typescript
-    -   [vim-prettier](https://github.com/vim-prettier)
-    -   [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)
-    -   [typescript-vim](https://github.com/leafgarland/typescript-vim)
--   Rust
-    -   [rust.vim](https://github.com/rust-lang/rust.vim)
-    -   [vim-racer](https://github.com/racer-rust/vim-racer)
-
-## Themes
-
-These change quite often, since I like change up my themes.
-
--   [sourcerer.vim](https://github.com/xero/sourcerer.vim)
--   [vim-monotone](https://github.com/Lokaltog/vim-monotone)
--   [vim-colors-off](https://github.com/pbrisbin/vim-colors-off)
+- C++
+  - [vim-cpp-enhanced-highlight](https://github.com/vim-cpp-enhanced-highlight)
+  - [jackguo380](https://github.com/vim-lsp-cxx-highlight)
+- Go
+  - [vim-go](https://github.com/fatih/vim-go)
+- Javascript & Typescript
+  - [vim-prettier](https://github.com/vim-prettier)
+  - [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)
+  - [typescript-vim](https://github.com/leafgarland/typescript-vim)
+- Rust
+  - [rust.vim](https://github.com/rust-lang/rust.vim)
+  - [vim-racer](https://github.com/racer-rust/vim-racer)

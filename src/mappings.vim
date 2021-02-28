@@ -122,6 +122,7 @@ cnoreabbrev Qa qa
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
 
+" Define comment mappings for comments
 let s:comment_map = {
   \   "c": '\/\/ ',
   \   "conf": '#',
@@ -135,6 +136,8 @@ let s:comment_map = {
   \   "sh": '# ',
   \ }
 
+" ToggleComment handles adding a comment to the start of a file, using the 
+" comment mapping above. This replaces the usage of nerd-commenter plugin.
 function! ToggleComment()
   if has_key(s:comment_map, &filetype)
     let comment_leader = s:comment_map[&filetype]
@@ -150,6 +153,7 @@ function! ToggleComment()
   end
 endfunction
 
+" Add a comment to selection using Ctrl-l
 nnoremap <C-l> :call ToggleComment()<cr>
 vnoremap <C-l> :call ToggleComment()<cr>
 

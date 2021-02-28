@@ -18,9 +18,9 @@ Plug 'junegunn/fzf.vim'
 
 " Themes
 Plug 'xero/sourcerer.vim'
-Plug 'romainl/apprentice'
 Plug 'Lokaltog/vim-monotone'
-Plug 'chriskempson/base16-vim'
+Plug 'andreypopp/vim-colors-plain'
+Plug 'tomasiser/vim-code-dark'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -53,7 +53,7 @@ set background=dark
 " Configure the monotone theme
 let g:monotone_emphasize_comments = 1 " Emphasize comments
 let g:monotone_contrast_factor = 0.90
-colorscheme base16-solarized-dark
+colorscheme codedark
 
 " Set the leader key to a good position, which is easy to access
 let mapleader = "\<Space>"
