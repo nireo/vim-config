@@ -91,6 +91,11 @@ set t_ut=
 
 set signcolumn=no "Disable the column next to the line numbers since it makes some themes look bad.
 
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
 " Spelling check
 set spelllang=en_us   " Set US English for spell checking.
 augroup forspellcheck
@@ -99,3 +104,12 @@ augroup forspellcheck
   autocmd FileType text,markdown,gitcommit setlocal spell
   autocmd BufRead,BufNewFile *.md setlocal spell
 augroup END
+
+
+" highlight trailing space
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()

@@ -33,8 +33,8 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-tsserver',
   \ 'coc-eslint',
-  \ 'coc-prettier', 
-  \ 'coc-json', 
+  \ 'coc-prettier',
+  \ 'coc-json',
   \ 'coc-go',
   \ 'coc-html',
   \ 'coc-clangd',
@@ -134,7 +134,7 @@ let g:clang_format#style_options = {
             \ "AlignConsecutiveMacros": "true",
             \ "AllowShortCaseLabelsOnASingleLine": "true",
             \ "AllowAllArgumentsOnNextLine": "true",
-            \ "AllowShortFunctionsOnASingleLine": "false", 
+            \ "AllowShortFunctionsOnASingleLine": "false",
             \ "ColumnLimit": 110,
             \ "Standard" : "c++11"}
 
@@ -155,3 +155,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " Automatically update rust files on save using rustfmt
 let g:rustfmt_autosave = 1
+
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='minimalist'

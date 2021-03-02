@@ -53,7 +53,7 @@ Those are just examples of the coc extensions. A full list of implemented coc ex
 
 - C++
   - [vim-cpp-enhanced-highlight](https://github.com/vim-cpp-enhanced-highlight)
-  - [jackguo380](https://github.com/vim-lsp-cxx-highlight)
+  - [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 - Go
   - [vim-go](https://github.com/fatih/vim-go)
 - Javascript & Typescript
