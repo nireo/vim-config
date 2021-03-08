@@ -1,6 +1,6 @@
 syntax enable " enable syntax highlighting
 set background=dark " set the background to be dark
-set number relativenumber 
+set number relativenumber
 set encoding=utf-8
 
 set smarttab
@@ -24,7 +24,7 @@ set t_vb=
 set tm=500
 set splitright
 set splitbelow
-set hidden 
+set hidden
 set updatetime=300
 set shortmess+=c
 set noswapfile

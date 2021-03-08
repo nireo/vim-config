@@ -9,6 +9,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
 
+Plug 'nireo/betterplain'
+
 " Detect a root directory
 Plug 'airblade/vim-rooter'
 
@@ -20,12 +22,14 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'ap/vim-css-color'
+
 " Themes
 Plug 'xero/sourcerer.vim'
 Plug 'Lokaltog/vim-monotone'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'mswift42/vim-themes'
-Plug 'owickstrom/vim-colors-paramount'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -35,9 +39,12 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Web development
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
+Plug 'preservim/tagbar'
+
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
@@ -60,7 +67,7 @@ let g:monotone_emphasize_comments = 1 " Emphasize comments
 let g:monotone_contrast_factor = 0.90
 
 try
-  colorscheme plain
+  colorscheme betterplain
 catch
   colorscheme default
 endtry

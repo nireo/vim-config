@@ -136,7 +136,7 @@ let s:comment_map = {
   \   "sh": '# ',
   \ }
 
-" ToggleComment handles adding a comment to the start of a file, using the 
+" ToggleComment handles adding a comment to the start of a file, using the
 " comment mapping above. This replaces the usage of nerd-commenter plugin.
 function! ToggleComment()
   if has_key(s:comment_map, &filetype)
@@ -157,3 +157,4 @@ endfunction
 nnoremap <C-l> :call ToggleComment()<cr>
 vnoremap <C-l> :call ToggleComment()<cr>
 
+nmap <F8> :TagbarToggle<CR>
