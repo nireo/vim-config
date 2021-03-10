@@ -1,3 +1,12 @@
+" All credit goes to https://github.com/andreypopp/vim-colors-plain
+" All this colorscheme is a copy of that one just having some colors
+" and text styles changed.
+"
+" Differences
+" - Change string and number colors to violet/purple instead of a light blue
+" - Added a more readable comment color. Gray -> orange
+" - Changed text style for comments from italic to none.
+
 hi clear
 
 if exists('syntax on')
@@ -29,7 +38,6 @@ let s:light_yellow    = { "gui": "#F3E430", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
 let s:custom_comment  = { "gui": "#DC9C41", "cterm": "11"}
 
-" this is a comment
 if &background == "dark"
   let s:bg               = s:black
   let s:bg_subtle        = s:light_black
@@ -143,7 +151,7 @@ hi! link FoldColumn       LineNr
 hi! link SignColumn       LineNr
 
 " __Comment__
-call s:h("Comment",       {"fg": s:comment, "gui": "italic"})
+call s:h("Comment",       {"fg": s:comment, "gui": "NONE"})
 
 " __Constant__
 call s:h("Constant",      {"fg": s:constant})
@@ -271,11 +279,6 @@ hi link jsGlobalNodeObjects Normal
 hi link jsArrowFunction Noise
 hi link StorageClass Statement
 
-hi link xmlTag Constant
-hi link xmlTagName xmlTag
-hi link xmlEndTag xmlTag
-hi link xmlAttrib xmlTag
-
 hi link markdownH1 Statement
 hi link markdownH2 Statement
 hi link markdownH3 Statement
@@ -290,13 +293,3 @@ hi link markdownHeadingDelimiter Constant
 
 hi link yamlBlockMappingKey Statement
 hi link pythonOperator Statement
-
-hi link ALEWarning WarningMsg
-hi link ALEWarningSign WarningMsg
-hi link ALEError ErrorMsg
-hi link ALEErrorSign ErrorMsg
-hi link ALEInfo InfoMsg
-hi link ALEInfoSign InfoMsg
-
-hi link sqlStatement Statement
-hi link sqlKeyword Keyword

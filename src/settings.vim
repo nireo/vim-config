@@ -52,11 +52,13 @@ set splitright
 set splitbelow
 
 " unload buffer when it is abandoned
-set hidden 
+set hidden
 
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+
+
 
 " The amount of lines above and below the cursor
 set scrolloff=4
@@ -73,7 +75,7 @@ set noshowmode
 " Better search
 set ignorecase
 set incsearch
-set smartcase    
+set smartcase
 
 " Set the standard file type
 set ffs=unix,dos,mac
@@ -113,3 +115,8 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" netrw configuration
+let g:netrw_keepdir = 0
+let g:netrw_winsize = 30 " Only 30% of the screen
+let g:netrw_banner = 0 " Disable the banner

@@ -9,8 +9,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Show git indications for added, modified and removed files
 Plug 'airblade/vim-gitgutter'
 
-Plug 'nireo/betterplain'
-
 " Detect a root directory
 Plug 'airblade/vim-rooter'
 
@@ -22,14 +20,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Display the colors for colors such as #123456 and so on
 Plug 'ap/vim-css-color'
 
 " Themes
 Plug 'xero/sourcerer.vim'
-Plug 'Lokaltog/vim-monotone'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -43,8 +40,8 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
+" Display functions, variables and more in a small bar to the side.
 Plug 'preservim/tagbar'
-
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
@@ -62,10 +59,7 @@ end
 set t_Co=256
 set background=dark
 
-" Configure the monotone theme
-let g:monotone_emphasize_comments = 1 " Emphasize comments
-let g:monotone_contrast_factor = 0.90
-
+" Try setting the colorscheme
 try
   colorscheme betterplain
 catch

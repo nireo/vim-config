@@ -157,4 +157,8 @@ endfunction
 nnoremap <C-l> :call ToggleComment()<cr>
 vnoremap <C-l> :call ToggleComment()<cr>
 
+" toggle the tagbar to view all variables and functions
 nmap <F8> :TagbarToggle<CR>
+
+" open the built in file browser
+nmap <F6> :Vexplore<CR>

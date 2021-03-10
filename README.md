@@ -35,6 +35,10 @@ let g:coc_global_extensions = [
 
 Those are just examples of the coc extensions. A full list of implemented coc extensions can be found [here](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions).
 
+## betterplain color scheme
+
+A simple color scheme based on [plain](https://github.com/andreypopp/vim-colors-plain) mainly with small changes.
+
 ## Screenshot
 
 ![Screenshot of editor](./editor-screenshot.png)
