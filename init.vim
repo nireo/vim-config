@@ -12,9 +12,8 @@ Plug 'airblade/vim-gitgutter'
 " Detect a root directory
 Plug 'airblade/vim-rooter'
 
-" display buffers and a statusbar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" display buffers
+Plug 'ap/vim-buftabline'
 
 " FuzzyFileFinder is for quickly searching files in directory
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -22,6 +21,9 @@ Plug 'junegunn/fzf.vim'
 
 " Display the colors for colors such as #123456 and so on
 Plug 'ap/vim-css-color'
+
+" Help with commenting
+Plug 'preservim/nerdcommenter'
 
 " Themes
 Plug 'xero/sourcerer.vim'
@@ -73,3 +75,4 @@ source ~/.config/nvim/src/settings.vim " Load the settings for example `set hidd
 source ~/.config/nvim/src/mappings.vim " Load all of the custom mappings
 source ~/.config/nvim/src/plugins.vim "Load all of the settings related to the plugins above.
 source ~/.config/nvim/src/filetypes.vim " Load all the custom settings for different filetypes
+source ~/.config/nvim/src/statusline.vim " The custom statusline

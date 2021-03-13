@@ -15,9 +15,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-" Disable the cursor in vim, instead use the one from the terminal
-set guicursor=
-
 " This is a macro execution optimization. This makes it so that the screen
 " doesn't get re-rendered after every macro, but it waits for it to finish.
 set lazyredraw
