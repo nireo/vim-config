@@ -15,7 +15,7 @@ endif
 
 let g:colors_name='betterplain'
 
-let s:black           = { "gui": "#151515", "cterm": "0"   }
+let s:black           = { "gui": "#282828", "cterm": "0"   }
 let s:medium_gray     = { "gui": "#767676", "cterm": "243" }
 let s:white           = { "gui": "#F1F1F1", "cterm": "15"  }
 let s:light_black     = { "gui": "#424242", "cterm": "8"   }
@@ -24,10 +24,10 @@ let s:subtle_black    = { "gui": "#303030", "cterm": "236" }
 let s:light_gray      = { "gui": "#999999", "cterm": "249" }
 let s:lighter_gray    = { "gui": "#CCCCCC", "cterm": "251" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "251" }
-let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
-let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
+let s:dark_red        = { "gui": "#cc241d", "cterm": "1"   }
+let s:light_red       = { "gui": "#fb4934", "cterm": "1"   }
 let s:dark_blue       = { "gui": "#cca8e9", "cterm": "4"   }
-let s:light_blue      = { "gui": "#c3bef0", "cterm": "153" }
+let s:light_blue      = { "gui": "#d3869b", "cterm": "153" }
 let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
 let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
 let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }

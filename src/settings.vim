@@ -6,6 +6,15 @@
 " number
 set number relativenumber
 
+" Disable the gui cursor
+set guicursor=
+
+" Split windows with equal size
+set equalalways
+
+" Treat dash separated words as a single word word
+set iskeyword+=-
+
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
 let g:loaded_matchparen = 1
@@ -54,8 +63,6 @@ set hidden
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-
-
 
 " The amount of lines above and below the cursor
 set scrolloff=4

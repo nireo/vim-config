@@ -35,12 +35,6 @@ tnoremap <C-k> <Esc>
 " Disable macro recorder
 nnoremap Q <NOP>
 
-" Buffer navigation
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
-nnoremap <silent> <Leader>bf :bfirst<CR>
-nnoremap <silent> <Leader>bl :blast<CR>
-
 " Better window mapping
 nnoremap <Leader>wj <C-W>j
 nnoremap <Leader>wk <C-W>k
@@ -112,11 +106,14 @@ cnoreabbrev Wq wq
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
-cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 cnoreabbrev qw wq
 cnoreabbrev Qa qa
+
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " Different keybindings to save
 nnoremap <Leader>w :write<CR>
@@ -127,3 +124,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " open the built in file browser
 nmap <F6> :Vexplore<CR>
+
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprevious<CR>
