@@ -6,12 +6,6 @@
 " number
 set number relativenumber
 
-" Disable the gui cursor
-set guicursor=
-
-" Split windows with equal size
-set equalalways
-
 " Treat dash separated words as a single word word
 set iskeyword+=-
 

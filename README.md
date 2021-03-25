@@ -42,28 +42,3 @@ A simple color scheme based on [plain](https://github.com/andreypopp/vim-colors-
 ## Screenshot
 
 ![Screenshot of editor](./editor-screenshot.png)
-
-## Plugins
-
-### Not language specific
-
-- [coc.nvim](https://github.com/neoclide/coc.nvim)
-- [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-- [fzf](https://github.com/junegunn/fzf)
-- [fzf.vim](https://github.com/junegunn/fzf.vim)
-- [vim-rooter](https://github.com/airblade/vim-rooter)
-
-### Language specific
-
-- C++
-  - [vim-cpp-enhanced-highlight](https://github.com/vim-cpp-enhanced-highlight)
-  - [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
-- Go
-  - [vim-go](https://github.com/fatih/vim-go)
-- Javascript & Typescript
-  - [vim-prettier](https://github.com/vim-prettier)
-  - [yats.vim](https://github.com/HerringtonDarkholme/yats.vim)
-  - [typescript-vim](https://github.com/leafgarland/typescript-vim)
-- Rust
-  - [rust.vim](https://github.com/rust-lang/rust.vim)
-  - [vim-racer](https://github.com/racer-rust/vim-racer)

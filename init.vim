@@ -22,9 +22,6 @@ Plug 'junegunn/fzf.vim'
 " Display the colors for colors such as #123456 and so on
 Plug 'ap/vim-css-color'
 
-" Help with commenting
-Plug 'preservim/nerdcommenter'
-
 " Themes
 Plug 'xero/sourcerer.vim'
 Plug 'andreypopp/vim-colors-plain'

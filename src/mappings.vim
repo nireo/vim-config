@@ -88,16 +88,6 @@ nnoremap N Nzzzv
 nnoremap <leader>h :<C-u>split<CR>
 nnoremap <leader>v :<C-u>vsplit<CR>
 
-" Close the current window
-nnoremap <silent> <Leader>Q <C-w>c
-
-" H To move to the start of a line.
-" L to move to the end of a line.
-nnoremap H ^
-nnoremap L $
-nnoremap K {
-nnoremap J }
-
 " Abbreviations for different miss spellings of common commands
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
