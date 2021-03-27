@@ -109,11 +109,17 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
 
-" toggle the tagbar to view all variables and functions
-nmap <F8> :TagbarToggle<CR>
-
 " open the built in file browser
 nmap <F6> :Vexplore<CR>
 
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
+
+command! Reload :so ~/.config/nvim/init.vim
+
+" change working directory to where the file in the buffer is located
+" if user types `,cd`
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
+" Replace all occurences of a word
+nnoremap <silent><Leader>R :%s/\<<c-r><c-w>\>//gI<c-f>$F/i

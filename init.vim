@@ -23,9 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'ap/vim-css-color'
 
 " Themes
-Plug 'xero/sourcerer.vim'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'morhetz/gruvbox'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -38,9 +36,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
-" Display functions, variables and more in a small bar to the side.
-Plug 'preservim/tagbar'
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
@@ -58,12 +53,7 @@ end
 set t_Co=256
 set background=dark
 
-" Try setting the colorscheme
-try
-  colorscheme betterplain
-catch
-  colorscheme default
-endtry
+colorscheme betterplain
 
 " Set the leader key to a good position, which is easy to access
 let mapleader = "\<Space>"

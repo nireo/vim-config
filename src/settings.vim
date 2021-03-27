@@ -118,3 +118,8 @@ autocmd BufWinLeave * call clearmatches()
 let g:netrw_keepdir = 0
 let g:netrw_winsize = 30 " Only 30% of the screen
 let g:netrw_banner = 0 " Disable the banner
+
+" Disable automatically commenting out new lines
+augroup DisableAutoCommenting
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup END
