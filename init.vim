@@ -22,8 +22,12 @@ Plug 'junegunn/fzf.vim'
 " Display the colors for colors such as #123456 and so on
 Plug 'ap/vim-css-color'
 
+" Focus mode
+Plug 'junegunn/goyo.vim'
+
 " Themes
 Plug 'andreypopp/vim-colors-plain'
+Plug 'lifepillar/vim-solarized8'
 
 " C++ plugins
 Plug 'rhysd/vim-clang-format'
@@ -36,10 +40,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
-" Rust plugins
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 call plug#end()
 
 filetype plugin indent on

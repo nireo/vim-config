@@ -150,13 +150,6 @@ autocmd Filetype c, cpp, objc ClangFormatAutoEnable
 autocmd BufWritePre *.c,*.h,*.cpp,*.hpp,*.objc ClangFormat
 
 " Prettier formatting
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
-
-" Automatically update rust files on save using rustfmt
-let g:rustfmt_autosave = 1
-
-" Airline settings
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='minimalist'
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.html, PrettierAsync
 
