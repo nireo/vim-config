@@ -39,7 +39,6 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-clangd',
   \ 'coc-rls',
-  \ 'coc-pyright'
   \ ]
 
 inoremap <silent><expr> <TAB>

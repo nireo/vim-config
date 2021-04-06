@@ -29,10 +29,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'lifepillar/vim-solarized8'
 
-" C++ plugins
-Plug 'rhysd/vim-clang-format'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
-
 " Golang plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 

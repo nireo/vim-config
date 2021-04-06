@@ -6,9 +6,6 @@
 " number
 set number relativenumber
 
-" Treat dash separated words as a single word word
-set iskeyword+=-
-
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
 let g:loaded_matchparen = 1
@@ -85,9 +82,6 @@ set noswapfile
 
 " backspace fix
 set backspace=indent,eol,start
-
-" fix vim background changing in tmux
-set t_ut=
 
 set signcolumn=no "Disable the column next to the line numbers since it makes some themes look bad.
 

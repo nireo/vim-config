@@ -9,9 +9,6 @@ nnoremap k gk
 " Such that I dont have to press shift when wanting to use commands
 nnoremap ; :
 
-" Toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
 " Add a new binding for the ESC-key since it is quite far away
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
@@ -51,21 +48,11 @@ nnoremap <C-h> :nohlsearch<cr>
 nnoremap <Leader>d m`YP``
 vnoremap <Leader>d YPgv
 
-" Use the arrow keys for window navigation since I wasn't really using them
-" anyway so I decided to use them for something.
-map <Up>   <C-W>k
-map <Down> <C-W>j
-map <Left> <C-W>h
-map <Right> <C-W>l
-
 " Disable the esc key for practice using C-k & C-j
 inoremap <Esc> <nop>
 
 " add a save key binding instead of writing the command :w
 nmap <leader>w :w!<cr>
-
-" terminal emulation
-nnoremap <silent> <leader>sh :terminal<CR>
 
 " Exit and save the file
 nmap <leader>q :wq!<cr>
@@ -109,17 +96,10 @@ command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 nnoremap <Leader>w :write<CR>
 xnoremap <Leader>w <Esc>:write<CR>
 
-" open the built in file browser
-nmap <F6> :Vexplore<CR>
-
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
 command! Reload :so ~/.config/nvim/init.vim
-
-" change working directory to where the file in the buffer is located
-" if user types `,cd`
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 " Replace all occurences of a word
 nnoremap <silent><Leader>R :%s/\<<c-r><c-w>\>//gI<c-f>$F/i
