@@ -6,6 +6,8 @@
 " number
 set number relativenumber
 
+set guicursor=
+
 " Do not highlight matching parenthesies, since this looks bad in some themes,
 " and isn't really needed.
 let g:loaded_matchparen = 1

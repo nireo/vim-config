@@ -36,6 +36,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
+" Elixir
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
 filetype plugin indent on

@@ -4,8 +4,9 @@
 "
 " Differences
 " - Change string and number colors to violet/purple instead of a light blue
-" - Added a more readable comment color. Gray -> orange
+" - Added a more readable comment color. Gray -> Green
 " - Changed text style for comments from italic to none.
+" #DC9C41
 
 hi clear
 
@@ -36,7 +37,7 @@ let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
 let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
 let s:light_yellow    = { "gui": "#F3E430", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
-let s:custom_comment  = { "gui": "#DC9C41", "cterm": "11"}
+let s:custom_comment  = { "gui": "#608B4E", "cterm": "2"}
 
 if &background == "dark"
   let s:bg               = s:black
