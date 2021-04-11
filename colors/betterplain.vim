@@ -6,7 +6,7 @@
 " - Change string and number colors to violet/purple instead of a light blue
 " - Added a more readable comment color. Gray -> Green
 " - Changed text style for comments from italic to none.
-" #DC9C41
+" - Changed the search color to red, since I though the yellow color was really bad
 
 hi clear
 
@@ -35,9 +35,11 @@ let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
 let s:light_green     = { "gui": "#5FD7A7", "cterm": "10"  }
 let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
 let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
-let s:light_yellow    = { "gui": "#F3E430", "cterm": "11"  }
+let s:light_yellow    = { "gui": "#d3869b", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
-let s:custom_comment  = { "gui": "#608B4E", "cterm": "2"}
+
+let s:custom_comment  = { "gui": "#8ec07c", "cterm": "2"   }
+let s:custom_search   = { "gui": "#fb4934", "cterm": "1"   }
 
 if &background == "dark"
   let s:bg               = s:black
@@ -55,7 +57,7 @@ if &background == "dark"
   let s:cursor_line      = s:subtle_black
   let s:constant         = s:light_blue
   let s:comment          = s:custom_comment
-  let s:selection        = s:dark_yellow
+  let s:selection        = s:custom_search
   let s:selection_fg     = s:black
   let s:ok               = s:light_green
   let s:warning          = s:yellow

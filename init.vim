@@ -25,10 +25,6 @@ Plug 'ap/vim-css-color'
 " Focus mode
 Plug 'junegunn/goyo.vim'
 
-" Themes
-Plug 'andreypopp/vim-colors-plain'
-Plug 'lifepillar/vim-solarized8'
-
 " Golang plugins
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -36,9 +32,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
-" Elixir
-Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
 filetype plugin indent on
